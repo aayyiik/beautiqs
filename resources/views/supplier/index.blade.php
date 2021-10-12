@@ -10,33 +10,33 @@
         <div class="container">
             <div class = 'row'>
                 <div class='col-6'>
-                   <h1>List Barang</h1>
+                   <h1>List Supplier</h1>
                 <div class='col-6'>
                   
-                                        <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Tambah Data Barang
-                                        </button>
+                       <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                       List Supplier
+                       </button>
                     </div>
 
                       </div>
                       
                 <table class='table table-hover'>
                     <tr>
-                        <th>Kode Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Attribute Stok Barang</th>
-                        <th>Harga Beli Barang</th>
-                        <th>Harga Jual Barang</th>
+                        <th>ID Supplier</th>
+                        <th>ID Kota</th>
+                        <th>Nama Supplier</th>
+                        <th>Alamat Supplier</th>
+                        <th>Telp Supplier</th>
                         <th> AKSI</th>
                 
                     </tr>
-                    @foreach ($barangs as $barang)
+                    @foreach ($suppliers as $supplier)
                     <tr>
-                        <td>{{ $barang->kode_barang }}</td>
-                        <td>{{ $barang->nama_barang }}</td>
-                        <td>{{ $barang->attribute_stok_barang29 }}</td>
-                        <td>{{ $barang->harga_beli_barang }}</td>
-                        <td>{{ $barang->harga_jual_barang }}</td>
+                        <td>{{ $supplier->id_sup }}</td>
+                        <td>{{ $supplier->id_kota }}</td>
+                        <td>{{ $supplier->nama_sup }}</td>
+                        <td>{{ $supplier->alamat_sup }}</td>
+                        <td>{{ $supplier->telp_sup }}</td>
                         <td><a href="#" class="btn btn-warning btn-sm">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm">Hapus</a>
                         </td>
@@ -52,34 +52,34 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Input Data Barang Baru</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Input Data Supplier Baru</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
           </button>
         </div>
 
         <div class="modal-body">
-            <form action="/barang/create" method="POST">
+            <form action="/supplier/create" method="POST">
              {{csrf_field()}}
                   <div class="from-group">
-                    <label for="formGroupExampleInput" class="form-label">Kode Barang</label>
-                    <input type="kode_barang" class="form-control" id="formGroupExampleInput" placeholder="Kode Barang">
+                    <label for="formGroupExampleInput" class="form-label">ID Supplier</label>
+                    <input type="id_sup" class="form-control" id="formGroupExampleInput" placeholder="Kode Barang">
                   </div>
                   <div class="from-group">
-                    <label for="formGroupExampleInput2" class="form-label">Nama Barang</label>
-                    <input type="nama_barang" class="form-control" id="formGroupExampleInput2" placeholder="Nama Barang">
+                    <label for="formGroupExampleInput2" class="form-label">ID Kota</label>
+                    <input type="id_kota" class="form-control" id="formGroupExampleInput2" placeholder="Nama Barang">
                   </div>
                   <div class="from-group">
-                    <label for="formGroupExampleInput" class="form-label">Stok Barang</label>
-                    <input type="attribute_stok_barang29" class="form-control" id="formGroupExampleInput" placeholder="Stok">
+                    <label for="formGroupExampleInput" class="form-label">Nama Supplier</label>
+                    <input type="nama_sup" class="form-control" id="formGroupExampleInput" placeholder="Stok">
                   </div>
                   <div class="from-group">
-                    <label for="formGroupExampleInput2" class="form-label">Harga Beli Barang</label>
-                    <input type="harga_beli_barang" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
+                    <label for="formGroupExampleInput2" class="form-label">Alamat Supplier</label>
+                    <input type="alamat_sup" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
                   </div>
                   <div class="from-group">
-                    <label for="formGroupExampleInput" class="form-label">Harga Jual Barang</label>
-                    <input type="harga_jual_barang" class="form-control" id="formGroupExampleInput" placeholder="Harga Jual">
+                    <label for="formGroupExampleInput" class="form-label">Telp Supplier</label>
+                    <input type="telp_sup" class="form-control" id="formGroupExampleInput" placeholder="Harga Jual">
                   </div>
         </div>
         <div class="modal-footer">

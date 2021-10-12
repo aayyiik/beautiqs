@@ -11,4 +11,15 @@ class BarangController extends Controller
         $barangs = Barang::all();
         return view('barang.index',['barangs' => $barangs]);
     }
+
+  //  public function create (Request $request)
+  // {
+     
+    //\App\Models\Barang::create($request->all());
+  //  }
+    public function create (Request $request){
+        \App\Models\Barang::create($request->input());
+        
+    }
+    
 }

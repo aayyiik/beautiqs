@@ -20,4 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/barang','BarangController@index');
-
+Route::post('/barang/create','BarangController@create');
+//Route::get('/barang/{barang}', 'BarangController@create');
+Route::get('/kota','KotaController@index');
+Route::get('/supplier','SupplierController@index');
+Route::get('/role','RoleController@index');
+Route::get('/login','LoginController@index');
