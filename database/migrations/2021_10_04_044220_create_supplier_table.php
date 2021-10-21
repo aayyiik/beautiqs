@@ -14,13 +14,16 @@ class CreateSupplierTable extends Migration
     public function up()
     {
         Schema::create('supplier', function (Blueprint $table) {
-            $table->increments('id_sup');
-            $table->integer('id_kota');
+            $table->bigIncrements('id_sup');
+            $table->unsignedBigInteger('id')->unsigned();
+              $table->foreign('id')
+                ->references('id')->on('kota')
+                ->onDelete('cascade');
             $table->string('nama_sup');
             $table->string('alamat_sup');
             $table->integer('telp_sup');
-            $table->foreign('id_kota')->references('id_kota')->on('kota');
             $table->timestamps();
+
         });
     }
 
@@ -32,5 +35,6 @@ class CreateSupplierTable extends Migration
     public function down()
     {
         Schema::dropIfExists('supplier');
+        Schema::dropIfExists('kota');
     }
 }

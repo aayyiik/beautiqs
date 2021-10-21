@@ -1,3 +1,6 @@
+@extends('layouts.master') 
+@section('content')
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,16 +11,21 @@
     <body>
 
         <div class="container">
+          @if(session('sukses'))
+          <div class="alert alert-success" role="alert">
+            Data Berhasil Diinput
+          </div>
+          @endif
             <div class = 'row'>
                 <div class='col-6'>
                    <h1>List Kota</h1>
                 <div class='col-6'>
-                  
-                                        <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Tambah Data Kota
-                                        </button>
+                   <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Tambah Data Kota
+                    </button>
                     </div>
-
+                    
+                    </div>
                       </div>
                       
                 <table class='table table-hover'>
@@ -31,15 +39,20 @@
                         <td>{{ $kota->id }}</td>
                         <td>{{ $kota->kota }}</td>
                         <td>
-                          <a href="#"class="btn btn-warning btn-sm">Edit</a>
-                          <a href="#"class="btn btn-danger btn-sm">Hapus</a>
+                          <a href="/kota/{{$kota->id}}/edit"class="btn btn-warning btn-sm">Edit</a>
+                          <a href="/kota/{{$kota->id}}/delete"class="btn btn-danger btn-sm " 
+                            onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
                         </td>
                         
                     </tr>
-                        
+                                     
                     @endforeach
+
+                    <a href="/kota/create"></a>
                 </table>
             </div>        
+
+
  <!-- Modal -->
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -52,14 +65,14 @@
         </div>
 
         <div class="modal-body">
-            <form action="/barang/create" method="POST">
+            <form action="/kota/create" method="GET">
+                 {{csrf_field()}}
                   <div class="from-group">
-                    <label for="formGroupExampleInput" class="form-label">ID</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID Kota">
+                    
                   </div>
                   <div class="mb-3">
                     <label for="formGroupExampleInput2" class="form-label">Kota</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nama Kota">
+                    <input name="kota" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nama Kota">
                   </div>
             
         </div>
@@ -74,4 +87,4 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     </body>
-
+@endsection

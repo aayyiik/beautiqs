@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    </head>
-    <body>
+@extends('layouts.master') 
+@section('content')
 
-        <div class="container">
+          @if(session('sukses'))
+          <div class="alert alert-success" role="alert">
+            {{session ('sukses')}}
+          
+          </div>
+          @endif
             <div class = 'row'>
                 <div class='col-6'>
                    <h1>List Barang</h1>
                 <div class='col-6'>
                   
-                                        <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Tambah Data Barang
-                                        </button>
+                   <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Tambah Data Barang
+                   </button>
                     </div>
 
                       </div>
@@ -34,17 +33,19 @@
                     <tr>
                         <td>{{ $barang->kode_barang }}</td>
                         <td>{{ $barang->nama_barang }}</td>
-                        <td>{{ $barang->attribute_stok_barang29 }}</td>
+                        <td>{{ $barang->attribute_stok_barang29}}</td>
                         <td>{{ $barang->harga_beli_barang }}</td>
                         <td>{{ $barang->harga_jual_barang }}</td>
-                        <td><a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                        <td><a href="/barang/{{$barang->kode_barang}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/barang/{{$barang->kode_barang}}/delete"class="btn btn-danger btn-sm " 
+                              onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
                         </td>
                         
                         
                     </tr>
                         
                     @endforeach
+                  
                 </table>
             </div>        
  <!-- Modal -->
@@ -59,27 +60,26 @@
         </div>
 
         <div class="modal-body">
-            <form action="/barang/create" method="POST">
+            <form action="/barang/create" method="GET">
              {{csrf_field()}}
                   <div class="from-group">
-                    <label for="formGroupExampleInput" class="form-label">Kode Barang</label>
-                    <input type="kode_barang" class="form-control" id="formGroupExampleInput" placeholder="Kode Barang">
+                    
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput2" class="form-label">Nama Barang</label>
-                    <input type="nama_barang" class="form-control" id="formGroupExampleInput2" placeholder="Nama Barang">
+                    <input name="nama_barang" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nama Barang">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">Stok Barang</label>
-                    <input type="attribute_stok_barang29" class="form-control" id="formGroupExampleInput" placeholder="Stok">
+                    <input name="attribute_stok_barang29" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Stok">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput2" class="form-label">Harga Beli Barang</label>
-                    <input type="harga_beli_barang" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
+                    <input name = "harga_beli_barang" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">Harga Jual Barang</label>
-                    <input type="harga_jual_barang" class="form-control" id="formGroupExampleInput" placeholder="Harga Jual">
+                    <input name= "harga_jual_barang" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Harga Jual">
                   </div>
         </div>
         <div class="modal-footer">
@@ -89,8 +89,8 @@
         </div>
       </div>
     </div>       
+@endsection 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    </body>
+
+        
 
