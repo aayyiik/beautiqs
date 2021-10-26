@@ -27,10 +27,6 @@ Route::get('/', function () {
 });
 
 
-
-
-
-
 // home
 //dashboard
 Route::get('/dashboard',[DashboardController::class,'index']);
@@ -83,10 +79,9 @@ Route::get('role/{id_role}/edit', [RoleController::class,'edit']);
 Route::post('role/{id_role}/update', [RoleController::class,'update']);
 Route::get('role/{id_role}/delete', [RoleController::class,'delete']);
 
-
-
 Route::get('/penerimaan','penerimaanController@index');
 Route::get('/pembayaran','PembayaranController@index');
 Route::get('/pemesanan','PemesananController@index');
 Route::get('/warna','WarnaController@index');
+
 

@@ -16,8 +16,7 @@ class SupplierController extends Controller
         return redirect ('/supplier')->with('sukses','Data Berhasil Diinput'); 
     }
    
-   
-         
+       
   //  public function edit ($id_sup){
   //      $supplier = \App\Models\Supplier::find($id_sup);
   //      return view('supplier/edit',['supplier' => $supplier]);
@@ -34,4 +33,5 @@ class SupplierController extends Controller
   //      $supplier->delete($supplier);
   //      return redirect('/supplier')->with('sukses','Data Berhasil dihapus');
  //   }
+
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class KotaController extends Controller
 {
+
     public function index(Request $request) {
         if($request->has('cari')){
             $kotas = Kota::where('kota','LIKE','%',$request->cari,'%')->get();
@@ -39,4 +40,5 @@ class KotaController extends Controller
         $kota->delete($kota);
         return redirect('/kota')->with('sukses','Data Berhasil dihapus');
     }
+
 }
