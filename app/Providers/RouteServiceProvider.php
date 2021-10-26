@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -18,7 +19,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
-
+    
+    
     /**
      * The controller namespace for the application.
      *
@@ -33,6 +35,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected $namespace = 'App\Http\Controllers';
+
     public function boot()
     {
         $this->configureRateLimiting();

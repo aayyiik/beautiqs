@@ -15,10 +15,6 @@ class CreateJenisBarangTable extends Migration
     {
         Schema::create('jenis_barang', function (Blueprint $table) {
             $table->increments('id_jb');
-            $table->unsignedBigInteger('kode_barang')->unsigned();
-              $table->foreign('kode_barang')
-                ->references('kode_barang')->on('barang')
-                ->onDelete('cascade');
             $table->string('jenis_barang');
             $table->timestamps();
 
@@ -35,6 +31,5 @@ class CreateJenisBarangTable extends Migration
     public function down()
     {
         Schema::dropIfExists('jenis_barang');
-        Schema::dropIfExists('barang');
     }
 }
