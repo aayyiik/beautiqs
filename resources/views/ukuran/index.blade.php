@@ -9,29 +9,28 @@
         <div class="col-md-12">
           <div class="panel">
             <div class="panel-heading">
-              <h3 class="panel-title">Data Kota</h3>
+              <h3 class="panel-title">Data Ukuran</h3>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Tambah Kota
+                Tambah Ukuran
                 </button>
               </div>
               <div class="panel-body">
                <table class="table table-striped">
                 <thead>
                   <tr>
-                      <th>ID Kota</th>
-                      <th>Kota</th>
-                      <th>AKSI</th>
+                    <th>ID Ukuran</th>
+                    <th>Ukuran</th>
+                    <th> AKSI</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($kotas as $kota)
+                    @foreach ($ukurans as $ukuran)
                     <tr>
-                        <td>{{ $kota->id_kota }}</td>
-                        <td>{{ $kota->kota }}</td>
-                        <td><a href="/kota/{{$kota->id_kota}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                          <a href="/kota/{{$kota->id_kota}}/delete"class="btn btn-danger btn-sm " 
-                            onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
-                      </td>                      
+                        <td>{{ $ukuran->id_ukuran }}</td>
+                        <td>{{ $ukuran->ukuran }}</td>
+                        <td><a href="/ukuran/{{$ukuran->id_ukuran}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                          <a href="/ukuran/{{$ukuran->ukuran}}/delete"class="btn btn-danger btn-sm " 
+                            onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>    
                     </tr>
                     @endforeach
                 </tbody>
@@ -43,33 +42,31 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Barang Baru</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Ukuran</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <form action="/kota/create" method="GET">
+          <form action="/ukuran/create" method="GET">
            {{csrf_field()}}
                 <div class="from-group">
-                  <label for="formGroupExampleInput2" class="form-label">Nama Kota</label>
-                  <input name="kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="nama kota">
+                  <label for="formGroupExampleInput" class="form-label">Size Ukuran</label>
+                  <input name="ukuran" type="text" class="form-control" id="formGroupExampleInput" placeholder="Ukuran">
                 </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input class="btn btn-primary" type="submit" value="Submit">
-
-         
       </div>
     </div>
   </div>
 </div>  
 
 @stop
+
 

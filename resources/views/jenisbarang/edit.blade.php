@@ -17,16 +17,16 @@
                  @endif
                   <div class = 'row'>
 
-                <form action="/kota/{{$kota->id_kota}}/update" method="POST">
+                <form action="/jenisbarang/{{$jenisbarang->id_jb}}/update" method="POST">
                       
                   {{csrf_field()}}
                      <div class="from-group">
-                       <label for="formGroupExampleInput" class="form-label">ID Kota</label>
-                       <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput" placeholder="id_kota" value="{{ $kota->id_kota }}">
+                       <label for="formGroupExampleInput" class="form-label">ID Jenis Barang</label>
+                       <input name="id_jb" type="inteeger" class="form-control" id="formGroupExampleInput" placeholder="id_jb" value="{{ $jenisbarang->id_jb }}">
                      </div>
                      <div class="mb-3">
                       <label for="formGroupExampleInput2" class="form-label">Jenis Barang</label>
-                      <input name="kota" type="text" class="form-control" id="formGroupExampleInput2" placeholder="nama_kota" value="{{ $kota->kota}}">
+                      <input name="jenis_barang" type="text" class="form-control" id="formGroupExampleInput2" placeholder="jenis_barang" value="{{ $jenisbarang->jenis_barang}}">
                      </div>
                      
 
@@ -34,4 +34,10 @@
         </form>
     </div>
   </div>
-@stop
+@endsection
+
+
+
+ 
+      
+

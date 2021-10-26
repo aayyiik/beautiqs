@@ -20,23 +20,22 @@ class KotaController extends Controller
     public function create (Request $request){
         \App\Models\Kota::create($request->all());
         return redirect ('/kota')->with('sukses','Data Berhasil Diinput');
-     //   return $request -> all();
-      //  return view('kota.create');
+          
     }
 
-    public function edit ($id){
-        $kota = \App\Models\Kota::find($id);
+    public function edit ($id_kota){
+        $kota = \App\Models\Kota::find($id_kota);
         return view('kota/edit',['kota' => $kota]);
     }
 
-    public function update (Request $request,$id){
-        $kota = \App\Models\Kota::find($id);
+    public function update (Request $request,$id_kota){
+        $kota = \App\Models\Kota::find($id_kota);
         $kota->update($request->all());
         return redirect('/kota')->with('sukses','Data Berhasil diupdate');
     }
 
-    public function delete ($id){
-        $kota = \App\Models\Kota::find($id);
+    public function delete ($id_kota){
+        $kota = \App\Models\Kota::find($id_kota);
         $kota->delete($kota);
         return redirect('/kota')->with('sukses','Data Berhasil dihapus');
     }

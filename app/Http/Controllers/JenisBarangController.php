@@ -15,8 +15,26 @@ class JenisBarangController extends Controller
 public function create (Request $request){
     \App\Models\JenisBarang::create($request->all());
     return redirect ('/jenisbarang')->with('sukses','Data Berhasil Diinput');
- //   return $request -> all();
-  //  return view('kota.create');
+
 }
+
+public function edit ($id_jb){
+    $jenisbarang = \App\Models\JenisBarang::find($id_jb);
+    return view('jenisbarang/edit',['jenisbarang' => $jenisbarang]);
+}
+
+public function update (Request $request,$id_jb){
+    $jenisbarang = \App\Models\JenisBarang::find($id_jb);
+    $jenisbarang->update($request->all());
+    return redirect('/jenisbarang')->with('sukses','Data Berhasil diupdate');
+}
+
+public function delete ($id_jb){
+    $jenisbarang = \App\Models\JenisBarang::find($id_jb);
+    $jenisbarang->delete($jenisbarang);
+    return redirect('/jenisbarang')->with('sukses','Data Berhasil dihapus');
+}
+
+
 
 }

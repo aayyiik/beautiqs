@@ -1,96 +1,93 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    </head>
-    <body>
+@extends('layouts.master') 
 
-        <div class="container">
-            <div class = 'row'>
-                <div class='col-6'>
-                   <h1>List Supplier</h1>
-                <div class='col-6'>
-                  
-                       <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                       List Supplier
-                       </button>
-                    </div>
+@section('content')
 
-                      </div>
-                      
-                <table class='table table-hover'>
+  <div class="main">
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel">
+              <div class="panel-heading">
+                <h3 class="panel-title">Data Supplier</h3>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Launch demo modal
+                  </button>
+                </div>
+                <div class="panel-body">
+                 <table class="table table-striped">
+                  <thead>
                     <tr>
-                        <th>ID Supplier</th>
-                        <th>ID Kota</th>
+                        <th>Id Supplier</th>
+                        <th>Id Kota</th>
                         <th>Nama Supplier</th>
-                        <th>Alamat Supplier</th>
-                        <th>Telp Supplier</th>
+                        <th>Alamat Suppplier</th>
+                        <th>Telpon Supplier</th>
                         <th> AKSI</th>
-                
                     </tr>
-                    @foreach ($suppliers as $supplier)
-                    <tr>
-                        <td>{{ $supplier->id_sup }}</td>
-                        <td>{{ $supplier->id_kota }}</td>
-                        <td>{{ $supplier->nama_sup }}</td>
-                        <td>{{ $supplier->alamat_sup }}</td>
-                        <td>{{ $supplier->telp_sup }}</td>
-                        <td><a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-                        </td>
-                        
-                        
-                    </tr>
-                        
-                    @endforeach
+                  </thead>
+                  <tbody>
+                      @foreach($suppliers as $supplier)
+                      <tr>
+                          <td>{{ $supplier->id_sup }}</td>
+                          <td>{{ $supplier->id_kota }}</td>
+                          <td>{{ $supplier->nama_sup }}</td>
+                          <td>{{ $supplier->alamat_sup}}</td>
+                          <td>{{ $supplier->telp_sup }}</td>
+                          <td><a href="/supplier/{{$supplier->kode_barang}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                              <a href="/supplier/{{$supplier->kode_barang}}/delete"class="btn btn-danger btn-sm " 
+                                onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
+                          </td>                         
+                      </tr>
+                      @endforeach
+                  </tbody>
                 </table>
-            </div>        
- <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Input Data Supplier Baru</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-
+          <h5 class="modal-title" id="exampleModalLabel">Barang Baru</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
-
         <div class="modal-body">
-            <form action="/supplier/create" method="POST">
+            <form action="/supplier/create" method="GET">
              {{csrf_field()}}
                   <div class="from-group">
-                    <label for="formGroupExampleInput" class="form-label">ID Supplier</label>
-                    <input type="id_sup" class="form-control" id="formGroupExampleInput" placeholder="Kode Barang">
-                  </div>
-                  <div class="from-group">
-                    <label for="formGroupExampleInput2" class="form-label">ID Kota</label>
-                    <input type="id_kota" class="form-control" id="formGroupExampleInput2" placeholder="Nama Barang">
+                    <label for="formGroupExampleInput2" class="form-label">Id Kota</label>
+                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">Nama Supplier</label>
-                    <input type="nama_sup" class="form-control" id="formGroupExampleInput" placeholder="Stok">
+                    <input name="nama_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Barang">
                   </div>
                   <div class="from-group">
-                    <label for="formGroupExampleInput2" class="form-label">Alamat Supplier</label>
-                    <input type="alamat_sup" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
+                    <label for="formGroupExampleInput" class="form-label">Alamat Supplier</label>
+                    <input name="alamat_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Stok">
                   </div>
                   <div class="from-group">
-                    <label for="formGroupExampleInput" class="form-label">Telp Supplier</label>
-                    <input type="telp_sup" class="form-control" id="formGroupExampleInput" placeholder="Harga Jual">
+                    <label for="formGroupExampleInput2" class="form-label">Telpon Supplier</label>
+                    <input name = "telp_sup" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
                   </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input class="btn btn-primary" type="submit" value="Submit">
         </div>
       </div>
-    </div>       
+    </div>
+  </div>  
+   
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    </body>
+@stop
+
 
