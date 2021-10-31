@@ -10,9 +10,8 @@
           <div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">Data Jenis Barang</h3>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Tambah Jenis
-                </button>
+              <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+              <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
               </div>
               <div class="panel-body">
                <table class="table table-striped">

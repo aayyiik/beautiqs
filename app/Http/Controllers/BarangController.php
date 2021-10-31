@@ -36,5 +36,28 @@ class BarangController extends Controller
       $barang->delete($barang);
       return redirect('/barang')->with('sukses','Data Berhasil dihapus');
   }
+
+  public function trash(){
+    $barang = Barang::onlyTrashed()->get();
+    return view('barang.trash',['barang' => $barang]);
+}
+
+public function restore($kode_barang = null){
+    if($kode_barang != null){
+        $barang = Barang::onlyTrashed()
+        ->where('kode_barang', $kode_barang)
+        ->restore();
+    }
+    return redirect('barang/trash')->with('sukses','Data Berhasil direstore');
+}
+
+public function forceDelete($kode_barang = null){
+    if($kode_barang != null){
+        $barang = Barang::onlyTrashed()
+        ->where('kode_barang', $kode_barang)
+        ->forceDelete();
+    }
+    return redirect('barang/trash')->with('sukses','Data Berhasil dihapus permanen');
+}
     
 }

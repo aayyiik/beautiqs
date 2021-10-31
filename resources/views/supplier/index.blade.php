@@ -9,10 +9,9 @@
           <div class="col-md-12">
             <div class="panel">
               <div class="panel-heading">
-                <h3 class="panel-title">Data Supplier</h3>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Launch demo modal
-                  </button>
+                <h3 class="panel-header">Data Supplier</h3>
+                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
                 </div>
                 <div class="panel-body">
                  <table class="table table-striped">
@@ -34,8 +33,8 @@
                           <td>{{ $supplier->nama_sup }}</td>
                           <td>{{ $supplier->alamat_sup}}</td>
                           <td>{{ $supplier->telp_sup }}</td>
-                          <td><a href="/supplier/{{$supplier->kode_barang}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                              <a href="/supplier/{{$supplier->kode_barang}}/delete"class="btn btn-danger btn-sm " 
+                          <td><a href="/supplier/{{$supplier->id_sup}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                              <a href="/supplier/{{$supplier->id_sup}}/delete"class="btn btn-danger btn-sm " 
                                 onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
                           </td>                         
                       </tr>
@@ -64,19 +63,19 @@
              {{csrf_field()}}
                   <div class="from-group">
                     <label for="formGroupExampleInput2" class="form-label">Id Kota</label>
-                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
+                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="JID Kota">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">Nama Supplier</label>
-                    <input name="nama_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Barang">
+                    <input name="nama_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Supplier">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">Alamat Supplier</label>
-                    <input name="alamat_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Stok">
+                    <input name="alamat_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Alamat Supplier">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput2" class="form-label">Telpon Supplier</label>
-                    <input name = "telp_sup" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
+                    <input name = "telp_sup" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Telp Supplier">
                   </div>
         </div>
         <div class="modal-footer">

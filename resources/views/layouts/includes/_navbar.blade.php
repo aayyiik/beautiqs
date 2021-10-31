@@ -1,6 +1,6 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="brand">
-        <a href="index.html"><img src="{{ asset('admin/assets/img/logo-dark.png') }}" alt="Klorofil Logo" class="img-responsive logo"></a>
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ec96a4;">
+    <div class="brand" style="background-color: #ec96a4;">
+        <a href="index.html"><img src="{{asset('admin/logo-beautiqs.png')}}" alt="BEAUTIQS Logo" class="img-responsive logo"></a>
     </div>
     <div class="container-fluid">
         <div class="navbar-btn">
@@ -9,7 +9,7 @@
         <form class="navbar-form navbar-left">
             <div class="input-group">
                 <input type="text" value="" class="form-control" placeholder="Search dashboard...">
-                <span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+                <span class="input-group-btn"><button type="button" class="btn btn-secondary">Go</button></span>
             </div>
         </form>
         <div id="navbar-menu">

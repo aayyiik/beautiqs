@@ -9,10 +9,9 @@
           <div class="col-md-12">
             <div class="panel">
               <div class="panel-heading">
-                <h3 class="panel-title">Data Role User</h3>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Tambah Role
-                  </button>
+                <h3 class="panel-header">Data Role User</h3>
+                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
                 </div>
                 <div class="panel-body">
                  <table class="table table-striped">

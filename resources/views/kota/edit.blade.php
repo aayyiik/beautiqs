@@ -10,11 +10,6 @@
           <div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">Edit Jenis Barang</h3>
-                 @if(session('sukses'))
-                  <div class="alert alert-success" role="alert">
-                   {{session ('sukses')}}
-                  </div>
-                 @endif
                   <div class = 'row'>
 
                 <form action="/kota/{{$kota->id_kota}}/update" method="POST">
@@ -28,9 +23,9 @@
                       <label for="formGroupExampleInput2" class="form-label">Jenis Barang</label>
                       <input name="kota" type="text" class="form-control" id="formGroupExampleInput2" placeholder="nama_kota" value="{{ $kota->kota}}">
                      </div>
+                      <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Submit</button>
                      
-
-                      <button type="submit" class="btn btn-warning" >Submit</button>
+                    
         </form>
     </div>
   </div>

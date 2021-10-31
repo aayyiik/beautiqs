@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Warna extends Model
 {
     use HasFactory;
+    protected $table = 'warna';
+    protected $primaryKey = 'id_warna';
+    protected $fillable = ['id_warna','warna'];
 }
+
