@@ -28,9 +28,7 @@
                       <label for="formGroupExampleInput2" class="form-label">Jenis Barang</label>
                       <input name="jenis_barang" type="text" class="form-control" id="formGroupExampleInput2" placeholder="jenis_barang" value="{{ $jenisbarang->jenis_barang}}">
                      </div>
-                     
-
-                      <button type="submit" class="btn btn-warning" >Submit</button>
+                     <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Submit</button>
         </form>
     </div>
   </div>

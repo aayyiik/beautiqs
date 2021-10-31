@@ -9,10 +9,9 @@
         <div class="col-md-12">
           <div class="panel">
             <div class="panel-heading">
-              <h3 class="panel-title">Data Ukuran</h3>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Tambah Ukuran
-                </button>
+              <h3 class="panel-header">Data Ukuran</h3>
+              <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
               </div>
               <div class="panel-body">
                <table class="table table-striped">
@@ -47,20 +46,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Tambah Ukuran</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form action="/ukuran/create" method="GET">
-           {{csrf_field()}}
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+                  </div>
+                <div class="modal-body">
+              <form action="/ukuran/create" method="GET">
+                {{csrf_field()}}
                 <div class="from-group">
                   <label for="formGroupExampleInput" class="form-label">Size Ukuran</label>
                   <input name="ukuran" type="text" class="form-control" id="formGroupExampleInput" placeholder="Ukuran">
                 </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input class="btn btn-primary" type="submit" value="Submit">
       </div>
     </div>

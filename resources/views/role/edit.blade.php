@@ -28,9 +28,7 @@
                       <label for="formGroupExampleInput2" class="form-label">Jenis Role</label>
                       <input name="jenis_role" type="text" class="form-control" id="formGroupExampleInput2" placeholder="jenis_role" value="{{ $role->jenis_role}}">
                      </div>
-                     
-
-                      <button type="submit" class="btn btn-warning" >Submit</button>
+                     <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Submit</button>
         </form>
     </div>
   </div>
