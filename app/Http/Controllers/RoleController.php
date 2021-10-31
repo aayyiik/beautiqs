@@ -27,4 +27,5 @@ class RoleController extends Controller
         $role->delete($role);
         return redirect('/role')->with('sukses','Data Berhasil dihapus');
     }
+
 }

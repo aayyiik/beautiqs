@@ -13,4 +13,5 @@ class Kota extends Model
     protected $table = 'kota';
     protected $primaryKey = 'id_kota';
     protected $fillable = ['id_kota','kota'];
+
 }

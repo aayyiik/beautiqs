@@ -36,5 +36,6 @@ class CreateSupplierTable extends Migration
     {
         Schema::dropIfExists('supplier');
         Schema::dropIfExists('kota');
+
     }
 }
