@@ -10,7 +10,9 @@
           <div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">Keranjang Sampah</h3>
+              <div class="right">
                 <a class="btn btn-primary" href="/barang" role="button">Kembali</a>
+              </div>
               </div>
               <div class="pull-right">
                 </a>

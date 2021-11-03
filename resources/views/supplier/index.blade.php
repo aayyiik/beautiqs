@@ -10,8 +10,10 @@
             <div class="panel">
               <div class="panel-heading">
                 <h3 class="panel-header">Data Supplier</h3>
-                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+                <div class="right">
+                  <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                  <a class="fa fa-trash btn btn-info" href="supplier/trash" role="button">Sampah</a>
+                </div>
                 </div>
                 <div class="panel-body">
                  <table class="table table-striped">

@@ -33,4 +33,5 @@ class WarnaController extends Controller
         $warna->delete($warna);
         return redirect('/warna')->with('sukses','Data Berhasil dihapus');
     }
+
 }

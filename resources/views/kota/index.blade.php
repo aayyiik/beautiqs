@@ -10,8 +10,10 @@
           <div class="panel">
             <div class="panel-heading">
               <h2 class="panel-header">Data Kota</h2>
+              <div class="right">
                 <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
                 <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+              </div>
               </div>
               <div class="panel-body">
                <table class="table table-striped">
@@ -42,7 +44,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -63,8 +64,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input class="btn btn-primary" type="submit" value="Submit">
-
-         
       </div>
     </div>
   </div>
