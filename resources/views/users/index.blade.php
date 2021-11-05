@@ -35,7 +35,7 @@
                       <tr>
                           <td>{{ $user->id_user }}</td>
                           <td>{{ $user->id_kota }}</td>
-                          <td>{{ $user->id_role }}</td>
+                          <td>{{ $user->role->jenis_role }}</td>
                           <td>{{ $user->nama_user }}</td>
                           <td>{{ $user->alamat_user}}</td>
                           <td>{{ $user->no_telp_user }}</td>

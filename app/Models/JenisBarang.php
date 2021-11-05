@@ -14,4 +14,10 @@ class JenisBarang extends Model
     protected $table = 'jenis_barang';
     protected $primaryKey = 'id_jb';
     protected $fillable = ['id_jb','jenis_barang'];
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class);
+    }
+
 }

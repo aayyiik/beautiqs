@@ -20,8 +20,8 @@
                   <thead>
                     <tr>
                         <th>Id Supplier</th>
-                        <th>Id Kota</th>
                         <th>Nama Supplier</th>
+                        <th>Nama Kota</th>
                         <th>Alamat Suppplier</th>
                         <th>Telpon Supplier</th>
                         <th> AKSI</th>
@@ -30,9 +30,9 @@
                   <tbody>
                       @foreach($suppliers as $supplier)
                       <tr>
-                          <td>{{ $supplier->id_sup }}</td>
-                          <td>{{ $supplier->id_kota }}</td>
+                          <td>{{ $supplier->id_sup }}</td>  
                           <td>{{ $supplier->nama_sup }}</td>
+                          <td>{{ $supplier->kota->kota }}</td>
                           <td>{{ $supplier->alamat_sup}}</td>
                           <td>{{ $supplier->telp_sup }}</td>
                           <td><a href="/supplier/{{$supplier->id_sup}}/edit" class="btn btn-warning btn-sm">Edit</a>

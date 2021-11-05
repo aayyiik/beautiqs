@@ -21,4 +21,8 @@ class Users extends Model
         'username',
         'password',
     ];
+
+    public function role() {
+        return $this->belongsTo(Role::class, 'id_role');
+      }
 }
