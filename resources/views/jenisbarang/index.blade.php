@@ -10,8 +10,10 @@
           <div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">Data Jenis Barang</h3>
-              <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-              <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+              <div class="right">
+                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                <a class="fa fa-trash btn btn-info" href="jenisbarang/trash" role="button">Sampah</a>
+              </div>
               </div>
               <div class="panel-body">
                <table class="table table-striped">
@@ -41,7 +43,33 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Jenis Barang Baru</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="/jenisbarang/create" method="GET">
+           {{csrf_field()}}
+                <div class="from-group">
+                <div class="from-group">
+                  <label for="formGroupExampleInput1" class="form-label">Jenis Barang</label>
+                  <input name="jenis_barang" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input class="btn btn-primary" type="submit" value="Submit">
 
+         
+      </div>
+    </div>
+  </div>
+</div>  
 @stop
 
 

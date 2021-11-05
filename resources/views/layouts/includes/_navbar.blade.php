@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ec96a4;">
     <div class="brand" style="background-color: #ec96a4;">
-        <a href="index.html"><img src="{{asset('admin/logo-beautiqs.png')}}" alt="BEAUTIQS Logo" class="img-responsive logo"></a>
+        <a href="index.html"><img src="{{asset('admin/assets/img/beautiqs.png')}}" alt="BEAUTIQS Logo" class="img-responsive logo"></a>
     </div>
     <div class="container-fluid">
         <div class="navbar-btn">
@@ -38,7 +38,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('admin/assets/img/user.png') }}" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('admin/assets/img/user.png') }}" class="img-circle" alt="Avatar"> <span>Hello, Ay&Yayak</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                         <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>

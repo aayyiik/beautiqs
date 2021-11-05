@@ -3,14 +3,14 @@
         <nav>
             <ul class="nav">
                 <li><a href="/dashboard" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-                <li><a href="elements.html" class=""><i class="lnr lnr-code"></i> <span>Elements</span></a></li>
+                <li><a href="elements.html" class=""><i class="fa fa-search"></i> <span>Trending</span></a></li>
                 
                 <li>
                     <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Data Master</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                     <div id="subPages" class="collapse ">
                         <ul class="nav">
                             <li><a href="/role" class="lnr lnr-book">Role</a></li>
-                            <li><a href="/user" class="lnr lnr-book">User</a></li>
+                            <li><a href="/users" class="lnr lnr-book">User</a></li>
                             <li><a href="/supplier" class="lnr lnr-book">Supplier</a></li>
                             <li><a href="/jenisbarang" class="lnr lnr-book">Jenis Barang</a></li>
                             <li><a href="/barang" class="lnr lnr-book">Barang</a></li>

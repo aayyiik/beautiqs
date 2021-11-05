@@ -10,8 +10,10 @@
             <div class="panel">
               <div class="panel-heading">
                 <h3 class="panel-header">Data Role User</h3>
-                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+                <div class="right">
+                  <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                  <a class="fa fa-trash btn btn-info" href="role/trash" role="button">Sampah</a>
+                </div> 
                 </div>
                 <div class="panel-body">
                  <table class="table table-striped">
@@ -55,10 +57,6 @@
         <div class="modal-body">
             <form action="/role/create" method="GET">
              {{csrf_field()}}
-                  <div class="from-group">
-                    <label for="formGroupExampleInput2" class="form-label">Id Role</label>
-                    <input name="id_role" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="ID Role">
-                  </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">jenis Role</label>
                     <input name="jenis_role" type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">

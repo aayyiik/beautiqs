@@ -10,8 +10,9 @@
           <div class="panel">
             <div class="panel-heading">
               <h2 class="panel-header">Data Warna</h2>
-              <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+              <div class="right">
+                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+              </div>
               <div class="panel-body">
                <table class="table table-striped">
                 <thead>
@@ -45,6 +46,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Tambah Ukuran</h5>
+            @if(session('sukses'))
+            <div class="alert alert-success text-center">
+                {{session('sukses')}}
+            </div>
+            @endif
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
               </button>

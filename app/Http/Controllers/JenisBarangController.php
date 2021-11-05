@@ -35,6 +35,29 @@ public function delete ($id_jb){
     return redirect('/jenisbarang')->with('sukses','Data Berhasil dihapus');
 }
 
+public function trash(){
+    $jenisbarang = JenisBarang::onlyTrashed()->get();
+    return view('jenisbarang.trash',['jenisbarang' => $jenisbarang]);
+}
+
+public function restore($id_jb = null){
+    if($id_jb != null){
+        $jenisbarang = JenisBarang::onlyTrashed()
+        ->where('id_jb', $id_jb)
+        ->restore();
+    }
+    return redirect('jenisbarang/trash')->with('sukses','Data Berhasil direstore');
+}
+
+public function forceDelete($id_jb = null){
+    if($id_jb != null){
+        $jenisbarang = JenisBarang::onlyTrashed()
+        ->where('id_jjb', $id_jb)
+        ->forceDelete();
+    }
+    return redirect('jenisbarang/trash')->with('sukses','Data Berhasil dihapus permanen');
+}
+
 
 
 }

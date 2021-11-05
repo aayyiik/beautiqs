@@ -10,16 +10,18 @@
             <div class="panel">
               <div class="panel-heading">
                 <h3 class="panel-header">Data Supplier</h3>
-                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+                <div class="right">
+                  <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                  <a class="fa fa-trash btn btn-info" href="supplier/trash" role="button">Sampah</a>
+                </div>
                 </div>
                 <div class="panel-body">
                  <table class="table table-striped">
                   <thead>
                     <tr>
                         <th>Id Supplier</th>
-                        <th>Id Kota</th>
                         <th>Nama Supplier</th>
+                        <th>Nama Kota</th>
                         <th>Alamat Suppplier</th>
                         <th>Telpon Supplier</th>
                         <th> AKSI</th>
@@ -28,9 +30,9 @@
                   <tbody>
                       @foreach($suppliers as $supplier)
                       <tr>
-                          <td>{{ $supplier->id_sup }}</td>
-                          <td>{{ $supplier->id_kota }}</td>
+                          <td>{{ $supplier->id_sup }}</td>  
                           <td>{{ $supplier->nama_sup }}</td>
+                          <td>{{ $supplier->kota->kota }}</td>
                           <td>{{ $supplier->alamat_sup}}</td>
                           <td>{{ $supplier->telp_sup }}</td>
                           <td><a href="/supplier/{{$supplier->id_sup}}/edit" class="btn btn-warning btn-sm">Edit</a>

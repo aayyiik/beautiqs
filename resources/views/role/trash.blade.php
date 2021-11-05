@@ -11,7 +11,7 @@
             <div class="panel-heading">
               <h3 class="panel-title">Keranjang Sampah</h3>
               <div class="right">
-                <a class="btn btn-primary" href="/supplier" role="button">Kembali</a>
+                <a class="btn btn-primary" href="/role" role="button">Kembali</a>
               </div>
               </div>
               <div class="pull-right">
@@ -21,25 +21,19 @@
                <table class="table table-striped">
                 <thead>
                   <tr>
-                      <th>Id Supplier</th>
-                      <th>Id Kota</th>
-                      <th>Nama Supplier</th>
-                      <th>Alamat Supplier</th>
-                      <th>Telp Supplier</th>
+                      <th>Id Role</th>
+                      <th>Role User</th>
                       <th>AKSI</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($supplier as $supplier)
+                    @foreach($role as $role)
                     <tr>
-                        <td>{{ $supplier->id_sup }}</td>
-                        <td>{{ $supplier->id_kota }}</td>
-                        <td>{{ $supplier->nama_sup }}</td>
-                        <td>{{ $supplier->alamat_sup }}</td>
-                        <td>{{ $supplier->telp_sup }}</td>
+                        <td>{{ $role->id_role }}</td>
+                        <td>{{ $role->jenis_role }}</td>
                         
-                        <td><a href="/supplier/{{$supplier->id_sup}}/restore" class="btn btn-warning btn-sm">Pulihkan</a>
-                            <a href="/supplier/{{$supplier->id_sup}}/forceDelete"class="btn btn-danger btn-sm " 
+                        <td><a href="/role/{{$role->id_role}}/restore" class="btn btn-warning btn-sm">Pulihkan</a>
+                            <a href="/role/{{$role->id_role}}/forceDelete"class="btn btn-danger btn-sm " 
                             onclick="return confirm ('Data akan dihapus permanen ?')">Hapus</a>
                             
                       </td>                      
