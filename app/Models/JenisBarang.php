@@ -13,7 +13,7 @@ class JenisBarang extends Model
     use HasFactory;
     protected $table = 'jenis_barang';
     protected $primaryKey = 'id_jb';
-    protected $fillable = ['id_jb','jenis_barang'];
+    protected $fillable = ['id_jb','nama_jb'];
 
     public function barang()
     {
