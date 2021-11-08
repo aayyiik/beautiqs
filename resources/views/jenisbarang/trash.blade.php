@@ -30,7 +30,7 @@
                     @foreach($jenisbarang as $jenisbarang)
                     <tr>
                         <td>{{ $jenisbarang->id_jb }}</td>
-                        <td>{{ $jenisbarang->jenis_barang }}</td>
+                        <td>{{ $jenisbarang->nama_jb }}</td>
                         <td><a href="/jenisbarang/{{$jenisbarang->id_jb}}/restore" class="btn btn-warning btn-sm">Pulihkan</a>
                             <a href="/jenisbarang/{{$jenisbarang->id_jb}}/forceDelete"class="btn btn-danger btn-sm " 
                             onclick="return confirm ('Data akan dihapus permanen ?')">Hapus</a>

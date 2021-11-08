@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UkuranController extends Controller
 {  
     public function index() {
-        $ukurans = Ukuran::all();
+        $ukurans = Ukuran::paginate(10);
         return view('ukuran.index',['ukurans' => $ukurans]);
     }
 

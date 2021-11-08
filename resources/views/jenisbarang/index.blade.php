@@ -28,7 +28,7 @@
                     @foreach($jenisbarangs as $jenisbarang)
                     <tr>
                         <td>{{ $jenisbarang->id_jb }}</td>
-                        <td>{{ $jenisbarang->jenis_barang }}</td>
+                        <td>{{ $jenisbarang->nama_jb }}</td>
                         <td><a href="/jenisbarang/{{$jenisbarang->id_jb}}/edit" class="btn btn-warning btn-sm">Edit</a>
                           <a href="/jenisbarang/{{$jenisbarang->id_jb}}/delete"class="btn btn-danger btn-sm " 
                             onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>                    
@@ -36,6 +36,7 @@
                     @endforeach
                 </tbody>
               </table>
+              {{$jenisbarangs->links() }}
             </div>
           </div>
         </div>
@@ -58,7 +59,7 @@
                 <div class="from-group">
                 <div class="from-group">
                   <label for="formGroupExampleInput1" class="form-label">Jenis Barang</label>
-                  <input name="jenis_barang" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
+                  <input name="nama_jb" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
                 </div>
       </div>
       <div class="modal-footer">

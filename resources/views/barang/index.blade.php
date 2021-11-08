@@ -22,7 +22,7 @@
                         <th>Kode Barang</th>
                         <th>Nama Barang</th>
                         <th>Jenis Barang</th>
-                        <th>Attribute Stok Barang</th>
+                        <th>Stok Barang</th>
                         <th>Harga Beli Barang</th>
                         <th>Harga Jual Barang</th>
                         <th> AKSI</th>
@@ -33,18 +33,18 @@
                       <tr>
                           <td>{{ $barang->kode_barang }}</td>                         
                           <td>{{ $barang->nama_barang }}</td>
-                          <td>{{ $barang->jenis_barang->jenis_barang }}</td>
-                          <td>{{ $barang->attribute_stok_barang29}}</td>
+                          <td>{{ $barang->jenis_barang->nama_jb }}</td>
+                          <td>{{ $barang->stok}}</td>
                           <td>{{ $barang->harga_beli_barang }}</td>
                           <td>{{ $barang->harga_jual_barang }}</td>
                           <td><a href="/barang/{{$barang->kode_barang}}/edit" class="btn btn-warning btn-sm">Edit</a>
                               <a href="/barang/{{$barang->kode_barang}}/delete"class="btn btn-danger btn-sm " 
-                                onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
-                          </td>                         
+                                onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a> </td>                      
                       </tr>
                       @endforeach
                   </tbody>
                 </table>
+                {{$barangs->links()}}
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
                     <input name="nama_barang" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Barang">
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">Stok Barang</label>
-                    <input name="attribute_stok_barang29" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Stok">
+                    <input name="stok" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Stok">
                   </div>
                   <div class="from-group">
                     <label for="formGroupExampleInput2" class="form-label">Harga Beli Barang</label>

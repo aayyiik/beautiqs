@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class WarnaController extends Controller
 {
     public function index() {
-        $warnas = Warna::all();
+        $warnas = Warna::paginate(10);
         return view('warna.index',['warnas' => $warnas]);
     }
 

@@ -34,6 +34,7 @@
                     @endforeach
                 </tbody>
               </table>
+              {{$warnas->links() }}
             </div>
           </div>
         </div>
@@ -70,7 +71,6 @@
     </div>
   </div>
 </div>  
-
 @stop
 
 

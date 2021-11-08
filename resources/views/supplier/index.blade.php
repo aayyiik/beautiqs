@@ -32,7 +32,7 @@
                       <tr>
                           <td>{{ $supplier->id_sup }}</td>  
                           <td>{{ $supplier->nama_sup }}</td>
-                          <td>{{ $supplier->kota->kota }}</td>
+                          <td>{{ $supplier->kota->nama_kota }}</td>
                           <td>{{ $supplier->alamat_sup}}</td>
                           <td>{{ $supplier->telp_sup }}</td>
                           <td><a href="/supplier/{{$supplier->id_sup}}/edit" class="btn btn-warning btn-sm">Edit</a>
@@ -43,6 +43,7 @@
                       @endforeach
                   </tbody>
                 </table>
+                {{$suppliers->links() }}
               </div>
             </div>
           </div>

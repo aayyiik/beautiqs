@@ -28,7 +28,7 @@
                     @foreach($kotas as $kota)
                     <tr>
                         <td>{{ $kota->id_kota }}</td>
-                        <td>{{ $kota->kota }}</td>
+                        <td>{{ $kota->nama_kota }}</td>
                         <td><a href="/kota/{{$kota->id_kota}}/edit" class="btn btn-warning btn-sm">Edit</a>
                           <a href="/kota/{{$kota->id_kota}}/delete"class="btn btn-danger btn-sm " 
                             onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
@@ -37,6 +37,7 @@
                     @endforeach
                 </tbody>
               </table>
+              {{$kotas->links() }}
             </div>
           </div>
         </div>
@@ -58,7 +59,7 @@
            {{csrf_field()}}
                 <div class="from-group">
                   <label for="formGroupExampleInput2" class="form-label">Nama Kota</label>
-                  <input name="kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="nama kota">
+                  <input name="nama_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="nama kota">
                 </div>
       </div>
       <div class="modal-footer">

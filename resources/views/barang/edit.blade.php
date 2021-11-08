@@ -34,7 +34,7 @@
                      </div>
                      <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Stok Barang</label>
-                        <input name="attribute_stok_barang29" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Stok Barang" value="{{ $barang->attribute_stok_barang29 }}">
+                        <input name="stok" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Stok Barang" value="{{ $barang->stok }}">
                       </div>
                       <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga Beli Barang</label>

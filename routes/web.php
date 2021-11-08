@@ -30,13 +30,17 @@ Route::get('/', function () {
 
 
 // home
-//dashboard
-Route::get('/dashboard',[DashboardController::class,'index']);
-//Route::get('/dashboard',[AdminController::class,'dashboard']);
 
 //log in
-Route::get('/login',[AuthController::class,'login'] );
+Route::get('/login',[AuthController::class,'login'] )->name('login');
 Route::post('/postlogin',[AuthController::class,'postlogin'] );
+Route::get('/logout',[AuthController::class,'logout'] );
+
+Route::group(['middleware' => 'auth'], function(){
+//dashboard
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+//Route::get('/dashboard',[AdminController::class,'dashboard']);
+
 
 //users buatan sendiri
 Route::get('/users',[UsersController::class,'index'] );
@@ -120,3 +124,4 @@ Route::get('/pemesanan','PemesananController@index');
 
 
 
+});

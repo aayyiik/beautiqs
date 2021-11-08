@@ -28,7 +28,7 @@
                       @foreach($roles as $role)
                       <tr>
                           <td>{{ $role->id_role }}</td>
-                          <td>{{ $role->jenis_role }}</td>
+                          <td>{{ $role->nama_role }}</td>
                           <td><a href="/role/{{$role->id_role}}/edit" class="btn btn-warning btn-sm">Edit</a>
                             <a href="/role/{{$role->id_role}}/delete"class="btn btn-danger btn-sm " 
                               onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
@@ -37,6 +37,7 @@
                       @endforeach
                   </tbody>
                 </table>
+                {{$roles->links() }}
               </div>
             </div>
           </div>
@@ -59,7 +60,7 @@
              {{csrf_field()}}
                   <div class="from-group">
                     <label for="formGroupExampleInput" class="form-label">jenis Role</label>
-                    <input name="jenis_role" type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">
+                    <input name="nama_role" type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">
                   </div>
         </div>
         <div class="modal-footer">
