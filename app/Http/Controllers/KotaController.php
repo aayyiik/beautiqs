@@ -14,7 +14,7 @@ class KotaController extends Controller
       //  }else{
      //       $kotas = Kota::all();
      //   }
-       $kotas = Kota::all();
+       $kotas = Kota::paginate(10);
 //  $kotas = Kota::onlyTrashed()->get();
         return view('kota.index',['kotas' => $kotas]);
     }

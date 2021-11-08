@@ -36,6 +36,7 @@
                     @endforeach
                 </tbody>
               </table>
+              {{$jenisbarangs->links() }}
             </div>
           </div>
         </div>

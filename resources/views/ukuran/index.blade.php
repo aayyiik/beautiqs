@@ -35,6 +35,7 @@
                     @endforeach
                 </tbody>
               </table>
+              {{$ukurans->links() }}
             </div>
           </div>
         </div>

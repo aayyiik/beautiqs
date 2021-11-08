@@ -39,12 +39,12 @@
                           <td>{{ $barang->harga_jual_barang }}</td>
                           <td><a href="/barang/{{$barang->kode_barang}}/edit" class="btn btn-warning btn-sm">Edit</a>
                               <a href="/barang/{{$barang->kode_barang}}/delete"class="btn btn-danger btn-sm " 
-                                onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
-                          </td>                         
+                                onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a> </td>                      
                       </tr>
                       @endforeach
                   </tbody>
                 </table>
+                {{$barangs->links()}}
               </div>
             </div>
           </div>

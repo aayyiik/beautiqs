@@ -37,6 +37,7 @@
                     @endforeach
                 </tbody>
               </table>
+              {{$kotas->links() }}
             </div>
           </div>
         </div>
