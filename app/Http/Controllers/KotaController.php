@@ -20,6 +20,11 @@ class KotaController extends Controller
     }
 
     public function create (Request $request){
+        $this->validate($request,[
+            'nama_kota' => 'required|max:20',
+        ]);
+
+
         \App\Models\Kota::create($request->all());
         return redirect ('/kota')->with('sukses','Data Berhasil Diinput');
           

@@ -58,9 +58,12 @@
         <div class="modal-body">
             <form action="/role/create" method="GET">
              {{csrf_field()}}
-                  <div class="from-group">
+                  <div class="from-group {{ $errors->has('nama_role') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">jenis Role</label>
                     <input name="nama_role" type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">
+                    @if($errors->has('nama_role') )
+                    <span class="help-block">{{ $errors->first('nama_role') }}</span>
+                    @endif
                   </div>
         </div>
         <div class="modal-footer">

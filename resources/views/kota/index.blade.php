@@ -57,9 +57,13 @@
       <div class="modal-body">
           <form action="/kota/create" method="GET">
            {{csrf_field()}}
-                <div class="from-group">
-                  <label for="formGroupExampleInput2" class="form-label">Nama Kota</label>
-                  <input name="nama_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="nama kota">
+                <div class="from-group {{ $errors->has('nama_kota') ? 'has-error' : '' }}">
+                  <label for="formGroupExampleInput" class="form-label">Nama Kota</label>
+                  <input name="nama_kota" type="integer" class="form-control" id="formGroupExampleInput2" 
+                  placeholder="nama kota" value="{{ old('nama_kota') }}">
+                @if($errors->has('nama_kota') )
+                  <span class="help-block">{{ $errors->first('nama_kota') }}</span>
+                @endif
                 </div>
       </div>
       <div class="modal-footer">

@@ -55,9 +55,13 @@
                 <div class="modal-body">
               <form action="/ukuran/create" method="GET">
                 {{csrf_field()}}
-                <div class="from-group">
+                <div class="from-group {{$errors->has('ukuran') ? 'has-error' : ''}}">
                   <label for="formGroupExampleInput" class="form-label">Size Ukuran</label>
-                  <input name="ukuran" type="text" class="form-control" id="formGroupExampleInput" placeholder="Ukuran">
+                  <input name="ukuran" type="text" class="form-control" id="formGroupExampleInput" 
+                  placeholder="Ukuran" value = "{{ old ('ukuran') }}">
+                  @if($errors->has('ukuran') )
+                  <span class="help-block">{{ $errors->first('ukuran') }}</span>
+                  @endif
                 </div>
               </div>
             <div class="modal-footer">

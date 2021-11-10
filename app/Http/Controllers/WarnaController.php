@@ -13,6 +13,9 @@ class WarnaController extends Controller
     }
 
     public function create(Request $request){
+        $this->validate($request,[
+            'warna' => 'required|min:1|max:50',
+        ]);
         \App\Models\Warna::create($request->all());
         return redirect ('/warna')->with('sukses','Data Berhasil Diinput'); 
     }

@@ -12,6 +12,13 @@ class SupplierController extends Controller
     }
 
     public function create(Request $request){
+        $this->validate($request,[
+            'id_kota' => 'required|min:1|max:5',
+            'nama_sup'=>'required',
+            'alamat_sup'=>'required|max:100',
+            'telp_sup'=>'required|max:16',
+
+        ]);
         \App\Models\Supplier::create($request->all());
         return redirect ('/supplier')->with('sukses','Data Berhasil Diinput'); 
     }

@@ -12,6 +12,9 @@ class RoleController extends Controller
     }
 
     public function create(Request $request){
+        $this->validate($request,[
+            'nama_role' => 'required|min:1|max:50',
+        ]);
         \App\Models\Role::create($request->all());
         return redirect ('/role')->with('sukses','Data Berhasil Diinput'); 
     }

@@ -64,23 +64,39 @@
         <div class="modal-body">
             <form action="/supplier/create" method="GET">
              {{csrf_field()}}
-                  <div class="from-group">
+                  <div class="from-group {{ $errors->has('id_kota') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput2" class="form-label">Id Kota</label>
-                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="JID Kota">
+                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="ID Kota" value="{{old('id_kota') }}" >
+                    @if($errors->has('id_kota') )
+                    <span class="help-block">{{$errors->first('id_kota')}}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('nama_sup') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Nama Supplier</label>
-                    <input name="nama_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Supplier">
+                    <input name="nama_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Supplier" value="{{ old('nama_sup')}}">
+                    @if($errors->has('nama_sup') )
+                    <span class="help-block">{{$errors->first('nama_sup')}}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('alamat_sup') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Alamat Supplier</label>
-                    <input name="alamat_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Alamat Supplier">
+                    <input name="alamat_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Alamat Supplier" value="{{ old('alamat_sup') }}">
+                    @if($errors->has('alamat_sup') )
+                    <span class="help-block">{{$errors->first('alamat_sup')}}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('telp_sup') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput2" class="form-label">Telpon Supplier</label>
-                    <input name = "telp_sup" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Telp Supplier">
+                    <input name = "telp_sup" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Telp Supplier" value="{{ old('telp_sup') }}">
+                    @if($errors->has('telp_sup') )
+                    <span class="help-block">{{$errors->first('telp_sup')}}</span>
+                    @endif
                   </div>
-        </div>
+        
+                </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <input class="btn btn-primary" type="submit" value="Submit">
