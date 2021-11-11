@@ -10,7 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -43,11 +43,11 @@ Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth'
 
 
 //users buatan sendiri
-Route::get('/users',[UsersController::class,'index'] );
-Route::get('/users/create',[UsersController::class,'create']) ;
-Route::get('users/{id_user}/edit', [UsersController::class,'edit']);
-Route::post('users/{id_user}/update', [UsersController::class,'update']);
-Route::get('users/{id_user}/delete', [UsersController::class,'delete']);
+Route::get('/users',[UserController::class,'index'] );
+Route::get('/users/create',[UserController::class,'create']) ;
+Route::get('users/{id_user}/edit', [UserController::class,'edit']);
+Route::post('users/{id_user}/update', [UserController::class,'update']);
+Route::get('users/{id_user}/delete', [UserController::class,'delete']);
 
 //barang
 Route::get('/barang',[BarangController::class,'index']);

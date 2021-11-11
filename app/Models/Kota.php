@@ -22,4 +22,8 @@ class Kota extends Model
     return $this->hasMany(Supplier::class);
   }
 
+  public function users(){
+    return $this->hasMany(Users::class);
+  }
+ 
 }
