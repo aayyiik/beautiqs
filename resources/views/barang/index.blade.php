@@ -65,24 +65,45 @@
         <div class="modal-body">
             <form action="/barang/create" method="GET">
              {{csrf_field()}}
-                  <div class="from-group">
-                    <label for="formGroupExampleInput2" class="form-label">Id Jenis Barang</label>
+                  
+                  <div class="from-group {{ $errors->has('id_jb') ? 'has-error' : '' }}">
+                    <label for="formGroupExampleInput1" class="form-label">Id Jenis Barang</label>
                     <input name="id_jb" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
+                    @if($errors->has('id_jb') )
+                    <span class="help-block">{{ $errors->first('id_jb') }}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('nama_barang') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Nama Barang</label>
                     <input name="nama_barang" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Barang">
-                  <div class="from-group">
+                    @if($errors->has('nama_barang') )
+                    <span class="help-block">{{ $errors->first('nama_barang') }}</span>
+                   @endif
+                  </div>
+                    
+                  <div class="from-group {{ $errors->has('stok') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Stok Barang</label>
                     <input name="stok" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Stok">
+                    @if($errors->has('stok') )
+                    <span class="help-block">{{ $errors->first('stok') }}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('harga_beli_barang') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput2" class="form-label">Harga Beli Barang</label>
                     <input name = "harga_beli_barang" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
+                    @if($errors->has('harga_beli_barang') )
+                    <span class="help-block">{{ $errors->first('harga_beli_barang') }}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('harga_jual_barang') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Harga Jual Barang</label>
                     <input name= "harga_jual_barang" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Harga Jual">
+                    @if($errors->has('harga_jual_barang') )
+                    <span class="help-block">{{ $errors->first('harga_jual_barang') }}</span>
+                    @endif
                   </div>
         </div>
         <div class="modal-footer">

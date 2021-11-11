@@ -23,6 +23,8 @@ class Users extends Authenticatable {
         'telp',
         'email',
         'password',
+        'remember_token'
+       
     ];
 
     /**
@@ -43,5 +45,15 @@ class Users extends Authenticatable {
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function kota() {
+        return $this->belongsTo(Kota::class, 'id_kota');
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class, 'id_role');
+    }
+
+    
    
 }

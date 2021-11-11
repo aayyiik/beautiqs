@@ -56,10 +56,12 @@
       <div class="modal-body">
           <form action="/jenisbarang/create" method="GET">
            {{csrf_field()}}
-                <div class="from-group">
-                <div class="from-group">
+                <div class="from-group {{ $errors->has('nama_jb') ? 'has-error' : '' }}">
                   <label for="formGroupExampleInput1" class="form-label">Jenis Barang</label>
-                  <input name="nama_jb" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
+                  <input name="nama_jb" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang" value="{{ old('nama_jb') }}">
+                  @if($errors->has('nama_jb') )
+                  <span class="help-block">{{ $errors->first('nama_jb') }}</span>
+                 @endif
                 </div>
       </div>
       <div class="modal-footer">

@@ -59,9 +59,13 @@
                 <div class="modal-body">
               <form action="/warna/create" method="GET">
                 {{csrf_field()}}
-                <div class="from-group">
+                <div class="from-group {{ $errors->has('warna') ? 'has-error' : '' }}">
                   <label for="formGroupExampleInput" class="form-label">Warna</label>
-                  <input name="warna" type="text" class="form-control" id="formGroupExampleInput" placeholder="Warna">
+                  <input name="warna" type="text" class="form-control" id="formGroupExampleInput" 
+                  placeholder="Warna" value ="{{ old('warna') }}">
+                  @if($errors->has('warna') )
+                  <span class="help-block">{{ $errors->first('warna') }}</span>
+                  @endif
                 </div>
               </div>
             <div class="modal-footer">

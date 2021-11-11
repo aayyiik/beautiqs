@@ -13,6 +13,9 @@ class JenisBarangController extends Controller
         return view('jenisbarang.index',['jenisbarangs' => $jenisbarangs]);
 }
 public function create (Request $request){
+    $this->validate($request,[
+        'nama_jb' => 'required|min:1|max:50',
+    ]);
     \App\Models\JenisBarang::create($request->all());
     return redirect ('/jenisbarang')->with('sukses','Data Berhasil Diinput');
 
