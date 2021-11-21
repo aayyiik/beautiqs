@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\JenisBarangController;
@@ -30,6 +31,8 @@ Route::get('/', function () {
 
 
 // home
+Route::get('/register',[SiteController::class,'register'] );
+Route::post('/postregister',[SiteController::class,'postregister'] );
 
 //log in
 Route::get('/login',[AuthController::class,'login'] )->name('login');
@@ -48,9 +51,13 @@ Route::get('/users/create',[UserController::class,'create']) ;
 Route::get('users/{id_user}/edit', [UserController::class,'edit']);
 Route::post('users/{id_user}/update', [UserController::class,'update']);
 Route::get('users/{id_user}/delete', [UserController::class,'delete']);
+Route::get('users/trash',[UserController::class,'trash']);
+Route::get('users/{id_user}/restore',[UserController::class,'restore']);
+Route::get('users/{id_user}/forceDelete', [UserController::class,'forceDelete']);
 
 //barang
 Route::get('/barang',[BarangController::class,'index']);
+Route::get('/barang/cari',[BarangController::class,'cari']);
 Route::get('/barang/create',[BarangController::class,'create']) ;
 Route::get('barang/{kode_barang}/edit', [BarangController::class,'edit']);
 Route::post('barang/{kode_barang}/update', [BarangController::class,'update']);
@@ -64,6 +71,7 @@ Route::get('barang/{kode_barang}/forceDelete', [BarangController::class,'forceDe
 
 //kota
 Route::get('/kota',[KotaController::class,'index'] );
+Route::get('/kota/cari',[KotaController::class,'cari']);
 Route::get('/kota/create',[KotaController::class,'create']) ;
 Route::get('kota/{id_kota}/edit', [KotaController::class,'edit']);
 Route::post('kota/{id_kota}/update', [KotaController::class,'update']);

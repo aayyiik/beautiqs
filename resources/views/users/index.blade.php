@@ -19,22 +19,25 @@
                  <table class="table table-striped">
                   <thead>
                     <tr>
-                        <th>Id Kota</th>
-                        <th>Id Role</th>
                         <th>Nama user</th>
+                        <th>Asal Kota</th>
+                        <th>Peran</th>
                         <th>Alamat User</th>
                         <th>No telp User</th>
+                        <th>Email</th>
                         <th> AKSI</th>
                     </tr>
                   </thead>
                   <tbody>
                       @foreach($users as $user)
                       <tr>
-                          <td>{{ $user->id_kota }}</td>
-                          <td>{{ $user->id_role }}</td>
+                          
                           <td>{{ $user->nama_user }}</td>
+                          <td>{{ $user->kota->nama_kota }}</td>
+                          <td>{{ $user->role->nama_role }}</td>
                           <td>{{ $user->alamat}}</td>
                           <td>{{ $user->telp}}</td>
+                          <td>{{ $user->email }}</td>
                           <td><a href="/users/{{$user->id_user}}/edit" class="btn btn-warning btn-sm">Edit</a>
                               <a href="/users/{{$user->id_user}}/delete"class="btn btn-danger btn-sm " 
                                 onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
@@ -65,12 +68,22 @@
              {{csrf_field()}}
                   <div class="from-group">
                     <label for="formGroupExampleInput1" class="form-label">Id Kota</label>
-                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Id Kota">
+                    <select name="id_kota" class="form-control">
+                          <option value="">- Pilih -</option>
+                        @foreach ($kotas as $kota)
+                          <option value="{{ $kota->id_kota }}">{{ $kota->nama_kota }}</option>
+                        @endforeach                      
+                    </select>
                   </div>
 
                   <div class="from-group">
                     <label for="formGroupExampleInput2" class="form-label">Id Role</label>
-                    <input name="id_role" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Id Role">
+                    <select name="id_role" class="form-control">
+                          <option value="">- Pilih -</option>
+                        @foreach ($roles as $role)
+                          <option value="{{ $role->id_role }}">{{ $role->nama_role }}</option>
+                        @endforeach                      
+                    </select>
                   </div>
 
                   <div class="from-group">
@@ -90,7 +103,7 @@
 
                   <div class="from-group">
                     <label for="formGroupExampleInput6" class="form-label">Username</label>
-                    <input name="email" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Username">
+                    <input name="email" type="email" class="form-control" id="formGroupExampleInput2" placeholder="Username">
                   </div>
   
         </div>

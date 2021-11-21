@@ -24,9 +24,10 @@
                        <label for="formGroupExampleInput" class="form-label">ID Role</label>
                        <input name="id_role" type="inteeger" class="form-control" id="formGroupExampleInput" placeholder="Id_role" value="{{ $role->id_role }}">
                      </div>
+                     
                      <div class="mb-3">
                       <label for="formGroupExampleInput2" class="form-label">Jenis Role</label>
-                      <input name="jenis_role" type="text" class="form-control" id="formGroupExampleInput2" placeholder="jenis_role" value="{{ $role->jenis_role}}">
+                      <input name="nama_role" type="text" class="form-control" id="formGroupExampleInput2" placeholder="jenis_role" value="{{ $role->nama_role}}">
                      </div>
                      <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Submit</button>
         </form>

@@ -20,26 +20,37 @@
                 <form action="/users/{{$users->id_user}}/update" method="POST">
                       
                   {{csrf_field()}}
+
+                     <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Nama User</label>
+                        <input name="nama_user" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nama User" value="{{ $users->nama_user }}">
+                     </div>
+
                      <div class="from-group">
-                       <label for="formGroupExampleInput" class="form-label">Id User</label>
-                       <input name="id_user" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Id Supplier" value="{{ $users->id_user }}">
-                     </div>
-                     <div class="mb-3">
-                      <label for="formGroupExampleInput2" class="form-label">Id Role</label>
-                      <input name="id_role" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Id Kota" value="{{ $users->id_role}}">
+                      <label for="formGroupExampleInput" class="form-label">Asal Kota</label>
+                      <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Kota" value="{{ $users->id_kota }}">
+                   </div>
+
+                   <div class="mb-3">
+                      <label for="formGroupExampleInput2" class="form-label">Peran</label>
+                      <input name="id_role" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Role" value="{{ $users->id_role}}">
                     </div>
+
                      <div class="mb-3">
-                       <label for="formGroupExampleInput2" class="form-label">Nama User</label>
-                       <input name="nama_user" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nama Supplier" value="{{ $users->nama_user }}">
-                     </div>
-                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">username</label>
-                        <input name="alamat_user" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Username" value="{{ $users->username}}">
+                          <label for="formGroupExampleInput2" class="form-label">Alamat</label>
+                          <input name="alamat" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Alamat" value="{{ $users->alamat}}">
                       </div>
+                      
                       <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Password</label>
-                        <input name="no_telp_user" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password" value="{{ $users->password}}">
+                          <label for="formGroupExampleInput2" class="form-label">No Telp</label>
+                          <input name="telp" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Telp" value="{{ $users->telp}}">
                       </div>
+
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control" id="formGroupExampleInput2" placeholder="Telp" value="{{ $users->email}}">
+                      </div>
+
                       <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Submit</button>
                       
         </form>

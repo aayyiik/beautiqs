@@ -4,30 +4,37 @@ namespace App\Http\Controllers;
 use App\Models\Kota;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KotaController extends Controller
 {
 
     public function index(Request $request) {
-        //if($request->has('cari')){
-      //      $kotas = Kota::where('kota','LIKE','%',$request->cari,'%')->get();
-      //  }else{
-     //       $kotas = Kota::all();
-     //   }
        $kotas = Kota::paginate(10);
-//  $kotas = Kota::onlyTrashed()->get();
         return view('kota.index',['kotas' => $kotas]);
+    }
+
+    public function cari(Request $request){
+        // menangkap data pencarian
+	    $cari = $request->cari;
+ 
+        // mengambil data dari table pegawai sesuai pencarian data
+        $kotas = DB::table('kota')
+        ->where('nama_kota','like',"%".$cari."%")
+        ->paginate();
+
+        // mengirim data pegawai ke view index
+        return view('kota.index',['kotas' => $kotas]);
+
     }
 
     public function create (Request $request){
         $this->validate($request,[
             'nama_kota' => 'required|max:20',
         ]);
-
-
         \App\Models\Kota::create($request->all());
         return redirect ('/kota')->with('sukses','Data Berhasil Diinput');
-          
+       
     }
 
     public function edit ($id_kota){

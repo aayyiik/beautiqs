@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 use App\Models\Barang;
-
+use App\Models\JenisBarang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
     public function index() {
-
-
         $barangs = Barang::paginate(10);
-        return view('barang.index',['barangs' => $barangs]);
+        $jenisbarangs = JenisBarang::all();
+        return view('barang.index',['barangs' => $barangs], compact('jenisbarangs'));
     }
 
    
@@ -28,6 +28,19 @@ class BarangController extends Controller
       \App\Models\Barang::create($request->all());
       return redirect('/barang');
   }
+
+    public function cari(Request $request){
+        // menangkap data pencarian
+        $cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $barangs = DB::table('barang')
+        ->where('nama_barang','like',"%".$cari."%")
+        ->paginate();
+
+        // mengirim data pegawai ke view index
+        return view('barang.index',['barangs' => $barangs]);
+    }
 
   public function edit ($kode_barang){
       $barang = \App\Models\Barang::find($kode_barang);

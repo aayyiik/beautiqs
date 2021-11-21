@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\Models\Supplier;
+use App\Models\Kota;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
     public function index() {
         $suppliers = Supplier::paginate(10);
-        return view('supplier.index',['suppliers' => $suppliers]);
+        $kotas = Kota::all();
+        return view('supplier.index',['suppliers' => $suppliers], compact('kotas'));
     }
 
     public function create(Request $request){
