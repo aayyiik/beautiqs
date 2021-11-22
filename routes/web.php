@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 
 // home
-Route::get('/register',[SiteController::class,'register'] );
+Route::get('/register',[SiteController::class,'register'] )->name('register');
 Route::post('/postregister',[SiteController::class,'postregister'] );
 
 //log in

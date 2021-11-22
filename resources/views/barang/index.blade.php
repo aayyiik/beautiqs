@@ -11,8 +11,7 @@
               <div class="panel-heading">
                 <h3 class="card-header">Data Barang</h3>
                 <p>Cari Data Barang :</p>
-
-	              <form action="/barang/cari" method="GET">
+                <form action="/barang/cari" method="GET">
 		              <input type="text" name="cari" placeholder="Cari Barang .." value="{{ old('cari') }}">
 		              <input type="submit" value="CARI">
 	              </form>

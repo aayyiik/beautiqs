@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Users;
-
+use App\Models\Kota;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 //masih belum siap
@@ -10,20 +11,26 @@ use Illuminate\Support\Str;
 class SiteController extends Controller
 {
     public function register(){
-        return view('sites.register');
+        $users = Users::all();
+        $kotas = Kota::all();
+        $roles = Role::all();
+        return view('sites.register',compact('users','kotas','roles'));
     }
 
     public function postregister(Request $request){
-       // dd($request->all());
+      //  dd($request->all());
+        Users::create([
 
-       Users::create([
-
-        'nama_user' => request('nama_user'),
-        'email' => request('email'),    
-        'password'=>bcrypt('rahasia'),
-        'remember_token' => Str::random(10),
-   ]);
-
-   return redirect ('/')->with('sukses','Data Berhasil Diinput');
+            'id_kota' => request('id_kota'),
+            'id_role' => request('id_role'),
+            'nama_user' => request('nama_user'),
+            'alamat' => request('alamat'),
+            'telp' => request('telp'),
+            'email' => request('email'),    
+            'password'=>bcrypt($request->password),
+            'remember_token' => Str::random(10),
+       ]);
+      
+      return redirect ('/login')->with('sukses','Data Berhasil Diinput');
     }
 }

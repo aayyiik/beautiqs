@@ -48,6 +48,10 @@
 								<div class="form-group clearfix">	
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+								<div class="bottom">
+									<label for="register">Belum punya akun?</label>
+									<span class="helper-text"><i class="lnr lnr-user"></i> <a href="/register">Registrasi</a></span>
+								</div>
 							</form>
 						</div>
 					</div>

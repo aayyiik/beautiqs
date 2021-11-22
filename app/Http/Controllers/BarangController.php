@@ -22,8 +22,6 @@ class BarangController extends Controller
             'stok' => 'required',
             'harga_beli_barang' => 'required',
             'harga_jual_barang' => 'required',
-
-
         ]);
       \App\Models\Barang::create($request->all());
       return redirect('/barang');
@@ -34,7 +32,7 @@ class BarangController extends Controller
         $cari = $request->cari;
 
         // mengambil data dari table pegawai sesuai pencarian data
-        $barangs = DB::table('barang')
+        $barangs = DB::table('barang', 'jenis_barang')
         ->where('nama_barang','like',"%".$cari."%")
         ->paginate();
 
