@@ -10,6 +10,11 @@
           <div class="panel">
             <div class="panel-heading">
               <h2 class="panel-header">Data Kota</h2>
+              <p>Cari Data Pegawai :</p>
+	              <form action="/kota/cari" method="GET">
+		              <input type="text" name="cari" placeholder="Cari Kota .." value="{{ old('cari') }}">
+		              <input type="submit" value="CARI">
+	              </form>
               <div class="right">
                 <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
                 <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
@@ -73,6 +78,5 @@
     </div>
   </div>
 </div>  
-
 @stop
 

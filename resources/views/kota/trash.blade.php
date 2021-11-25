@@ -28,11 +28,9 @@
                     @foreach($kotas as $kota)
                     <tr>
                         <td>{{ $kota->id_kota }}</td>
-                        <td>{{ $kota->kota }}</td>
+                        <td>{{ $kota->nama_kota }}</td>
                         <td><a href="/kota/{{$kota->id_kota}}/restore" class="btn btn-warning btn-sm">Pulihkan</a>
-                            <a href="/kota/{{$kota->id_kota}}/forceDelete"class="btn btn-danger btn-sm " 
-                            onclick="return confirm ('Data akan dihapus permanen ?')">Hapus</a>
-                            
+                            <a href="#" class="btn btn-danger btn-sm forceDelete" kota-id="{{$kota->id_kota}}">Delete</a>          
                       </td>                      
                     </tr>
                     @endforeach
@@ -45,7 +43,24 @@
     </div>
   </div>
 </div>
-
-
+@stop
+@section('footer')
+    <script>
+      $('.forceDelete').click(function(){
+        var kota_id = $(this).attr('kota-id');
+        swal({
+        title: "Yakin ?",
+        text: "Ingin menghapus permanen ?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+              window.location = "/kota/"+kota_id+"/forceDelete";
+            } 
+          });
+      });
+    </script>
 @stop
 

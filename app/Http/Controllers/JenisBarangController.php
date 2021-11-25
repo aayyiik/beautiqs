@@ -10,7 +10,7 @@ class JenisBarangController extends Controller
 {
     public function index() {
         $jenisbarangs = JenisBarang::paginate(10);
-        return view('jenisbarang.index',['jenisbarangs' => $jenisbarangs]);
+        return view('jenisbarang.index',['jenisbarangs'=>$jenisbarangs]);
 }
 public function create (Request $request){
     $this->validate($request,[
