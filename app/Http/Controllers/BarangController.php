@@ -32,7 +32,7 @@ class BarangController extends Controller
         $cari = $request->cari;
 
         // mengambil data dari table pegawai sesuai pencarian data
-        $barangs = DB::table('barang', 'jenis_barang')
+        $barangs = DB::table('barang')
         ->where('nama_barang','like',"%".$cari."%")
         ->paginate();
 

@@ -9,22 +9,21 @@
           <div class="col-md-12">
             <div class="panel">
               <div class="panel-heading">
-                <h3 class="card-header">Data Barang</h3>
-                <p>Cari Data Barang :</p>
-                <form action="/barang/cari" method="GET">
-		              <input type="text" name="cari" placeholder="Cari Barang .." value="{{ old('cari') }}">
-		              <input type="submit" value="CARI">
-	              </form>
-
-                <div class="right">
-                  <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                  <a class="fa fa-trash btn btn-info" href="barang/trash" role="button">Sampah</a>
-                </div>
-                </div>
-                <div class="panel-body">
-                 <table class="table table-striped">
-                  <thead>
-                    <tr>
+                <h3 class="panel-header">Data Barang</h3>
+                  <p>Cari Data  :</p>
+	                  <form action="/barang/cari" method="GET">
+		                  <input type="text" name="cari" placeholder="Cari .." value="{{ old('cari') }}">
+		                  <input type="submit" value="CARI">
+	                  </form>
+                        <div class="right">
+                          <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                          <a class="fa fa-trash btn btn-info" href="barang/trash" role="button">Sampah</a>
+                    </div>
+                      </div>
+                        <div class="panel-body">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
                         <th>Kode Barang</th>
                         <th>Nama Barang</th>
                         <th>Jenis Barang</th>
