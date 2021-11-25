@@ -34,7 +34,7 @@
                      </div>
                      <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Stok Barang</label>
-                        <input name="attribute_stok_barang29" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Stok Barang" value="{{ $barang->attribute_stok_barang29 }}">
+                        <input name="stok" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Stok Barang" value="{{ $barang->stok }}">
                       </div>
                       <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga Beli Barang</label>
@@ -44,7 +44,7 @@
                         <label for="formGroupExampleInput2" class="form-label">Harga Jual Barang</label>
                         <input name="harga_jual_barang" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Harga Jual Barang" value="{{ $barang->harga_jual_barang }}">
                       </div>
-                      <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Submit</button>
+                      <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Update</button>
         </form>
     </div>
   </div>

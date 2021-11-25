@@ -10,8 +10,10 @@
             <div class="panel">
               <div class="panel-heading">
                 <h3 class="panel-header">Data Role User</h3>
-                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+                <div class="right">
+                  <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                  <a class="fa fa-trash btn btn-info" href="role/trash" role="button">Sampah</a>
+                </div> 
                 </div>
                 <div class="panel-body">
                  <table class="table table-striped">
@@ -26,7 +28,7 @@
                       @foreach($roles as $role)
                       <tr>
                           <td>{{ $role->id_role }}</td>
-                          <td>{{ $role->jenis_role }}</td>
+                          <td>{{ $role->nama_role }}</td>
                           <td><a href="/role/{{$role->id_role}}/edit" class="btn btn-warning btn-sm">Edit</a>
                             <a href="/role/{{$role->id_role}}/delete"class="btn btn-danger btn-sm " 
                               onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
@@ -35,6 +37,7 @@
                       @endforeach
                   </tbody>
                 </table>
+                {{$roles->links() }}
               </div>
             </div>
           </div>
@@ -55,13 +58,12 @@
         <div class="modal-body">
             <form action="/role/create" method="GET">
              {{csrf_field()}}
-                  <div class="from-group">
-                    <label for="formGroupExampleInput2" class="form-label">Id Role</label>
-                    <input name="id_role" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="ID Role">
-                  </div>
-                  <div class="from-group">
+                  <div class="from-group {{ $errors->has('nama_role') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">jenis Role</label>
-                    <input name="jenis_role" type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">
+                    <input name="nama_role" type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">
+                    @if($errors->has('nama_role') )
+                    <span class="help-block">{{ $errors->first('nama_role') }}</span>
+                    @endif
                   </div>
         </div>
         <div class="modal-footer">

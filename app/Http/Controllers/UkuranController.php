@@ -8,11 +8,14 @@ use Illuminate\Http\Request;
 class UkuranController extends Controller
 {  
     public function index() {
-        $ukurans = Ukuran::all();
+        $ukurans = Ukuran::paginate(10);
         return view('ukuran.index',['ukurans' => $ukurans]);
     }
 
     public function create(Request $request){
+        $this->validate($request,[
+            'ukuran' => 'required|min:1|max:50',
+        ]);
         \App\Models\Ukuran::create($request->all());
         return redirect ('/ukuran')->with('sukses','Data Berhasil Diinput'); 
     }

@@ -26,10 +26,10 @@
                      </div>
                      <div class="mb-3">
                       <label for="formGroupExampleInput2" class="form-label">Jenis Barang</label>
-                      <input name="jenis_barang" type="text" class="form-control" id="formGroupExampleInput2" placeholder="jenis_barang" value="{{ $jenisbarang->jenis_barang}}">
+                      <input name="nama_jb" type="text" class="form-control" id="formGroupExampleInput2" placeholder="jenis_barang" value="{{ $jenisbarang->nama_jb}}">
                      </div>
                      <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Submit</button>
-        </form>
+                </form>
     </div>
   </div>
 @endsection

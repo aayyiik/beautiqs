@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -29,14 +30,24 @@ Route::get('/', function () {
 
 
 // home
-//dashboard
-Route::get('/dashboard',[DashboardController::class,'index']);
-//Route::get('/dashboard',[AdminController::class,'dashboard']);
 
 //log in
-Route::get('/login',[AuthController::class,'login'] );
+Route::get('/login',[AuthController::class,'login'] )->name('login');
 Route::post('/postlogin',[AuthController::class,'postlogin'] );
+Route::get('/logout',[AuthController::class,'logout'] );
 
+Route::group(['middleware' => 'auth'], function(){
+//dashboard
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+//Route::get('/dashboard',[AdminController::class,'dashboard']);
+
+
+//users buatan sendiri
+Route::get('/users',[UserController::class,'index'] );
+Route::get('/users/create',[UserController::class,'create']) ;
+Route::get('users/{id_user}/edit', [UserController::class,'edit']);
+Route::post('users/{id_user}/update', [UserController::class,'update']);
+Route::get('users/{id_user}/delete', [UserController::class,'delete']);
 
 //barang
 Route::get('/barang',[BarangController::class,'index']);
@@ -68,6 +79,9 @@ Route::get('/jenisbarang/create',[JenisBarangController::class,'create']) ;
 Route::get('jenisbarang/{id_jb}/edit', [JenisBarangController::class,'edit']);
 Route::post('jenisbarang/{id_jb}/update', [JenisBarangController::class,'update']);
 Route::get('jenisbarang/{id_jb}/delete', [JenisBarangController::class,'delete']);
+Route::get('jenisbarang/trash',[JenisBarangController::class,'trash']);
+Route::get('jenisbarang/{id_jb}/restore',[JenisBarangController::class,'restore']);
+Route::get('jenis barang/{id_jb}/forceDelete', [JenisBarangController::class,'forceDelete']);
 
 //ukuran
 Route::get('/ukuran',[UkuranController::class,'index'] );
@@ -88,9 +102,14 @@ Route::get('supplier/{id_sup}/forceDelete', [SupplierController::class,'forceDel
 
 //role
 Route::get('/role','RoleController@index');
+Route::get('/role/create',[RoleController::class,'create']);
 Route::get('role/{id_role}/edit', [RoleController::class,'edit']);
 Route::post('role/{id_role}/update', [RoleController::class,'update']);
 Route::get('role/{id_role}/delete', [RoleController::class,'delete']);
+Route::get('role/trash',[RoleController::class,'trash']);
+Route::get('role/{id_sup}/restore',[RoleController::class,'restore']);
+Route::get('role/{id_sup}/forceDelete', [RoleController::class,'forceDelete']);
+
 
 //warna
 Route::get('/warna',[WarnaController::class,'index'] );
@@ -105,3 +124,4 @@ Route::get('/pemesanan','PemesananController@index');
 
 
 
+});

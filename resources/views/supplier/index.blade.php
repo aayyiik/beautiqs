@@ -10,16 +10,18 @@
             <div class="panel">
               <div class="panel-heading">
                 <h3 class="panel-header">Data Supplier</h3>
-                <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                <a class="fa fa-trash btn btn-info" href="kota/trash" role="button">Sampah</a>
+                <div class="right">
+                  <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                  <a class="fa fa-trash btn btn-info" href="supplier/trash" role="button">Sampah</a>
+                </div>
                 </div>
                 <div class="panel-body">
                  <table class="table table-striped">
                   <thead>
                     <tr>
                         <th>Id Supplier</th>
-                        <th>Id Kota</th>
                         <th>Nama Supplier</th>
+                        <th>Nama Kota</th>
                         <th>Alamat Suppplier</th>
                         <th>Telpon Supplier</th>
                         <th> AKSI</th>
@@ -28,9 +30,9 @@
                   <tbody>
                       @foreach($suppliers as $supplier)
                       <tr>
-                          <td>{{ $supplier->id_sup }}</td>
-                          <td>{{ $supplier->id_kota }}</td>
+                          <td>{{ $supplier->id_sup }}</td>  
                           <td>{{ $supplier->nama_sup }}</td>
+                          <td>{{ $supplier->kota->nama_kota }}</td>
                           <td>{{ $supplier->alamat_sup}}</td>
                           <td>{{ $supplier->telp_sup }}</td>
                           <td><a href="/supplier/{{$supplier->id_sup}}/edit" class="btn btn-warning btn-sm">Edit</a>
@@ -41,6 +43,7 @@
                       @endforeach
                   </tbody>
                 </table>
+                {{$suppliers->links() }}
               </div>
             </div>
           </div>
@@ -61,23 +64,39 @@
         <div class="modal-body">
             <form action="/supplier/create" method="GET">
              {{csrf_field()}}
-                  <div class="from-group">
+                  <div class="from-group {{ $errors->has('id_kota') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput2" class="form-label">Id Kota</label>
-                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="JID Kota">
+                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="ID Kota" value="{{old('id_kota') }}" >
+                    @if($errors->has('id_kota') )
+                    <span class="help-block">{{$errors->first('id_kota')}}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('nama_sup') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Nama Supplier</label>
-                    <input name="nama_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Supplier">
+                    <input name="nama_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Supplier" value="{{ old('nama_sup')}}">
+                    @if($errors->has('nama_sup') )
+                    <span class="help-block">{{$errors->first('nama_sup')}}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('alamat_sup') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Alamat Supplier</label>
-                    <input name="alamat_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Alamat Supplier">
+                    <input name="alamat_sup" type="text" class="form-control" id="formGroupExampleInput" placeholder="Alamat Supplier" value="{{ old('alamat_sup') }}">
+                    @if($errors->has('alamat_sup') )
+                    <span class="help-block">{{$errors->first('alamat_sup')}}</span>
+                    @endif
                   </div>
-                  <div class="from-group">
+                  
+                  <div class="from-group {{ $errors->has('telp_sup') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput2" class="form-label">Telpon Supplier</label>
-                    <input name = "telp_sup" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Telp Supplier">
+                    <input name = "telp_sup" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Telp Supplier" value="{{ old('telp_sup') }}">
+                    @if($errors->has('telp_sup') )
+                    <span class="help-block">{{$errors->first('telp_sup')}}</span>
+                    @endif
                   </div>
-        </div>
+        
+                </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <input class="btn btn-primary" type="submit" value="Submit">

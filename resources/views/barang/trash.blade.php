@@ -10,7 +10,9 @@
           <div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">Keranjang Sampah</h3>
+              <div class="right">
                 <a class="btn btn-primary" href="/barang" role="button">Kembali</a>
+              </div>
               </div>
               <div class="pull-right">
                 </a>
@@ -32,9 +34,9 @@
                     @foreach($barang as $barang)
                     <tr>
                         <td>{{ $barang->kode_barang }}</td>
-                        <td>{{ $barang->id_jb }}</td>
+                        <td>{{ $barang->jenis_barang->nama_jb }}</td>
                         <td>{{ $barang->nama_barang }}</td>
-                        <td>{{ $barang->attribute_stok_barang29 }}</td>
+                        <td>{{ $barang->stok }}</td>
                         <td>{{ $barang->harga_beli_barang }}</td>
                         <td>{{ $barang->harga_jual_barang }}</td>
                         

@@ -10,13 +10,21 @@ class BarangController extends Controller
     public function index() {
 
 
-        $barangs = Barang::all();
+        $barangs = Barang::paginate(10);
         return view('barang.index',['barangs' => $barangs]);
     }
 
    
     public function create (Request $request){
-     
+        $this->validate($request,[
+            'nama_barang' => 'required|max:100',
+            'id_jb' => 'required',
+            'stok' => 'required',
+            'harga_beli_barang' => 'required',
+            'harga_jual_barang' => 'required',
+
+
+        ]);
       \App\Models\Barang::create($request->all());
       return redirect('/barang');
   }
