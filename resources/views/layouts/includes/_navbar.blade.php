@@ -1,6 +1,6 @@
-<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ec96a4;">
-    <div class="brand" style="background-color: #ec96a4;">
-        <a href="index.html"><img src="{{asset('admin/assets/img/beautiqs.png')}}" alt="BEAUTIQS Logo" class="img-responsive logo"></a>
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #E6E6FA;">
+    <div class="brand" style="background-color: #E6E6FA;">
+        <a href="index.html"><img src="{{asset('admin/dark-logo.png')}}" alt="BEAUTIQS Logo" class="img-responsive logo"></a>
     </div>
     <div class="container-fluid">
         <div class="navbar-btn">

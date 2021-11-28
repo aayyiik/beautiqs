@@ -6,15 +6,15 @@
     <div class="main-content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
-            <div class="panel">
-              <div class="panel-heading">
-                <h3 class="panel-header">Data Barang</h3>
-                  <p>Cari Data  :</p>
+          <p>Cari Data  :</p>
 	                  <form action="/barang/cari" method="GET">
 		                  <input type="text" name="cari" placeholder="Cari .." value="{{ old('cari') }}">
 		                  <input type="submit" value="CARI">
 	                  </form>
+          <div class="col-md-12">
+            <div class="panel">
+              <div class="panel-heading">
+                <h3 class="panel-header">Data Barang</h3>
                         <div class="right">
                           <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
                           <a class="fa fa-trash btn btn-info" href="barang/trash" role="button">Sampah</a>

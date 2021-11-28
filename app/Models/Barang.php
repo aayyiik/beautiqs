@@ -14,9 +14,13 @@ class Barang extends Model
     protected $primaryKey = 'kode_barang';
     protected $fillable = ['kode_barang','nama_barang','id_jb','stok','harga_beli_barang','harga_jual_barang'];
 
-    public function jenis_barang()
-    {
-        return $this->belongsTo(JenisBarang::class,'id_jb');
-    }
+   public function jenis_barang()
+   {
+       return $this->belongsTo(JenisBarang::class,'id_jb');
+   }
+
+    // public function barang(){
+    //     return $this->belongsTo('App\Models\Barang');
+    // }
     
 }
