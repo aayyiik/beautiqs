@@ -6,11 +6,6 @@
     <div class="main-content">
       <div class="container-fluid">
         <div class="row">
-          <p>Cari Data  :</p>
-	                  <form action="/barang/cari" method="GET">
-		                  <input type="text" name="cari" placeholder="Cari .." value="{{ old('cari') }}">
-		                  <input type="submit" value="CARI">
-	                  </form>
           <div class="col-md-12">
             <div class="panel">
               <div class="panel-heading">
@@ -21,7 +16,7 @@
                     </div>
                       </div>
                         <div class="panel-body">
-                          <table class="table table-striped">
+                          <table class="table table-striped" id="datatables">
                             <thead>
                               <tr>
                         <th>Kode Barang</th>
@@ -49,8 +44,7 @@
                       </tr>
                       @endforeach
                   </tbody>
-                </table>
-                {{ $barangs->links() }}              
+                </table>          
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
     public function index() {
-        $suppliers = Supplier::paginate(10);
+        $suppliers = Supplier::all();
         $kotas = Kota::all();
         return view('supplier.index',['suppliers' => $suppliers], compact('kotas'));
     }

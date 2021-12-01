@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 class BarangController extends Controller
 {
     public function index() {
-        $barangs = Barang::paginate(10);
+        $barangs=Barang::all();
+        // $barangs = Barang::paginate(10);
         $jenisbarangs = JenisBarang::all();
         return view('barang.index',['barangs' => $barangs], compact('jenisbarangs'));
     }
@@ -27,18 +28,18 @@ class BarangController extends Controller
       return redirect('/barang');
   }
 
-    public function cari(Request $request){
-        // menangkap data pencarian
-        $cari = $request->cari;
+    // public function cari(Request $request){
+    //     // menangkap data pencarian
+    //     $cari = $request->cari;
 
-        // mengambil data dari table pegawai sesuai pencarian data
-        $barangs = DB::table('barang')
-        ->where('nama_barang','like',"%".$cari."%")
-        ->paginate();
+    //     // mengambil data dari table pegawai sesuai pencarian data
+    //     $barangs = DB::table('barang')
+    //     ->where('nama_barang','like',"%".$cari."%")
+    //     ->paginate();
 
-        // mengirim data pegawai ke view index
-        return view('barang.index',['barangs' => $barangs]);
-    }
+    //     // mengirim data pegawai ke view index
+    //     return view('barang.index',['barangs' => $barangs]);
+    // }
 
   public function edit ($kode_barang){
       $barang = \App\Models\Barang::find($kode_barang);

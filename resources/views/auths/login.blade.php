@@ -34,15 +34,24 @@
 								<div class="logo text-center"><img src="{{asset('admin/beautiqs-logo.png')}}" alt="Klorofil Logo"></div>
 								<p class="lead">Login</p>
 							</div>
+							@if (session('status'))
+                				<div class="bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
+                   					 {{ session('status') }}
+                				</div>
+            				@endif
 							<form class="form-auth-small" action="/postlogin" method="POST">
 								{{csrf_field()}}
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input name="email" type="email" class="form-control" id="signin-email"  placeholder="Email">
+									<input name="email" type="email" class="form-control" id="signin-email" placeholder="Email" value="{{ old('email') }}">
+									<span class="text-danger">
+										@error('email'){{ $message }}
+										@enderror</span>
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input name="password" type="password" class="form-control" id="signin-password" placeholder="Password">
+									<input name="password" type="password" class="form-control" id="signin-password" placeholder="Password" value="{{ old('password') }}">
+									<span class="text-danger">@error('password'){{ $message }}@enderror</span>
 								</div>
 
 								<div class="form-group clearfix">	

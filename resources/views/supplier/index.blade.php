@@ -16,7 +16,7 @@
                 </div>
                 </div>
                 <div class="panel-body">
-                 <table class="table table-striped">
+                 <table class="table table-striped" id='datatables'>
                   <thead>
                     <tr>
                         <th>Id Supplier</th>
@@ -43,7 +43,6 @@
                       @endforeach
                   </tbody>
                 </table>
-                {{$suppliers->links() }}
               </div>
             </div>
           </div>

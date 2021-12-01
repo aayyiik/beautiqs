@@ -40,14 +40,54 @@ Route::get('/login',[AuthController::class,'login'] )->name('login');
 Route::post('/postlogin',[AuthController::class,'postlogin'] );
 Route::get('/logout',[AuthController::class,'logout'] );
 
-Route::group(['middleware' => ['auth','checkRole:1']], function(){
 //dashboard
 //Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
 //Route::get('/dashboard',[AdminController::class,'dashboard']);
 
+Route::group(['middleware' => ['auth','checkRole:2']], function(){
+//users buatan sendiri
+Route::get('/users',[UserController::class,'index'] );
+Route::get('/users/create',[UserController::class,'create']) ;
+Route::get('users/{id_user}/edit', [UserController::class,'edit']);
+Route::post('users/{id_user}/update', [UserController::class,'update']);
+Route::get('users/{id_user}/delete', [UserController::class,'delete']);
+Route::get('users/trash',[UserController::class,'trash']);
+Route::get('users/{id_user}/restore',[UserController::class,'restore']);
+Route::get('users/{id_user}/forceDelete', [UserController::class,'forceDelete']);
+
+//role
+Route::get('/role','RoleController@index');
+Route::get('/role/create',[RoleController::class,'create']);
+Route::get('role/{id_role}/edit', [RoleController::class,'edit']);
+Route::post('role/{id_role}/update', [RoleController::class,'update']);
+Route::get('role/{id_role}/delete', [RoleController::class,'delete']);
+Route::get('role/trash',[RoleController::class,'trash']);
+Route::get('role/{id_sup}/restore',[RoleController::class,'restore']);
+Route::get('role/{id_sup}/forceDelete', [RoleController::class,'forceDelete']);
+
+//pembayaran
+Route::get('/pembayaran','PembayaranController@index');
 
 
-//barang
+});
+
+
+Route::group(['middleware' => ['auth','checkRole:1']], function(){
+//pemesanan
+Route::get('/pemesanan',[PemesananController::class,'index']);
+Route::get('/pemesanan/create',[PemesananController::class,'create']);
+Route::get('/pemesanan/update',[PemesananController::class,'update']);
+
+//penerimaan
+Route::get('/penerimaan',[penerimaanController::class,'index']);
+});
+
+
+
+Route::group(['middleware' => ['auth','checkRole:1,2']], function(){
+    Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+
+    //barang
 Route::get('/barang',[BarangController::class,'index']);
 Route::get('/barang/cari',[BarangController::class,'cari']);
 Route::get('/barang/create',[BarangController::class,'create']) ;
@@ -108,45 +148,5 @@ Route::get('warna/{id_warna}/edit', [WarnaController::class,'edit']);
 Route::post('warna/{id_warna}/update', [WarnaController::class,'update']);
 Route::get('warna/{id_warna}/delete', [WarnaController::class,'delete']);
 
-//Penerimaan
-Route::get('/penerimaan',[PenerimaanController::class,'index']);
-
-//Pembayaran
-Route::get('/pembayaran',[PembayaranController::class,'index']);
-
-//Pemesanan
-Route::get('/pemesanan',[PemesananController::class,'index']);
-
-
-});
-
-Route::group(['middleware' => ['auth','checkRole:2']], function(){
-
-//users buatan sendiri
-Route::get('/users',[UserController::class,'index'] );
-Route::get('/users/create',[UserController::class,'create']) ;
-Route::get('users/{id_user}/edit', [UserController::class,'edit']);
-Route::post('users/{id_user}/update', [UserController::class,'update']);
-Route::get('users/{id_user}/delete', [UserController::class,'delete']);
-Route::get('users/trash',[UserController::class,'trash']);
-Route::get('users/{id_user}/restore',[UserController::class,'restore']);
-Route::get('users/{id_user}/forceDelete', [UserController::class,'forceDelete']);
-
-//role
-Route::get('/role','RoleController@index');
-Route::get('/role/create',[RoleController::class,'create']);
-Route::get('role/{id_role}/edit', [RoleController::class,'edit']);
-Route::post('role/{id_role}/update', [RoleController::class,'update']);
-Route::get('role/{id_role}/delete', [RoleController::class,'delete']);
-Route::get('role/trash',[RoleController::class,'trash']);
-Route::get('role/{id_sup}/restore',[RoleController::class,'restore']);
-Route::get('role/{id_sup}/forceDelete', [RoleController::class,'forceDelete']);
-
-//Pembayaran
-Route::get('/pembayaran',[PembayaranController::class,'index']);
-});
-
-Route::group(['middleware' => ['auth','checkRole:1,2']], function(){
-    Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
 
 });
