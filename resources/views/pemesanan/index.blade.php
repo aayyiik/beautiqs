@@ -11,7 +11,7 @@
             <div class="panel-heading">
               <h2 class="panel-header">Transaksi Pemesanan</h2>
                     <div class="right">
-                        <a class="fa fa-trash btn btn-success" href="pemesanan/create" role="button">Sampah</a>
+                        <a class="fa fa-trash btn btn-success" href="pemesanan/datapemesanan" role="button">Tambah</a>
                     </div>
                         </div>
                             <div class="panel-body">

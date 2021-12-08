@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\JenisBarang;
 use Illuminate\Http\Request;
+use App\Models\DetailPemesanan;
 use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
@@ -24,6 +25,8 @@ class BarangController extends Controller
             'harga_beli_barang' => 'required',
             'harga_jual_barang' => 'required',
         ]);
+
+        // $barangs->pemesanan()->attach($request->pemesanan);
       \App\Models\Barang::create($request->all());
       return redirect('/barang');
   }

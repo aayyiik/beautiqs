@@ -17,6 +17,10 @@ class Supplier extends Model
 public function kota() {
     return $this->belongsTo(Kota::class, 'id_kota');
   }
+
+  public function pemesanan() {
+    return $this->hasMany(Pemesanan::class, 'id_pesan');
+  }
 }
 
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\DetailPemesananController;
 
 
 /*
@@ -75,8 +76,12 @@ Route::get('/pembayaran','PembayaranController@index');
 Route::group(['middleware' => ['auth','checkRole:1']], function(){
 //pemesanan
 Route::get('/pemesanan',[PemesananController::class,'index']);
-Route::get('/pemesanan/create',[PemesananController::class,'create']);
-Route::get('/pemesanan/update',[PemesananController::class,'update']);
+
+//detail pemesanan
+Route::get('/pemesanan/datapemesanan',[DetailPemesananController::class,'index']);
+Route::get('/pemesanan/store',[DetailPemesananController::class,'store']);
+Route::get('pemesanan/{id}/cancel',[DetailPemesananController::class,'destroy']);
+Route::get('pemesanan/update',[DetailPemesananController::class,'update']);
 
 //penerimaan
 Route::get('/penerimaan',[penerimaanController::class,'index']);
