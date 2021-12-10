@@ -37,4 +37,16 @@ class DetailPemesananController extends Controller
         return redirect('/pemesanan/datapemesanan')->with('sukses','Data Berhasil dihapus');
     }
     
+    // public function submit(){
+    //     $detailpesan  = DetailPemesanan::create([
+    //         'kode_barang'=>$this->barang,
+    //         'jumlah_up'=>1
+        
+    //     ]);
+    //     $detailpesan->harga_up=$detailpesan->barang->harga_beli_barang;
+    //     $detailpesan->save();
+       
+        
+        
+    // }
 }

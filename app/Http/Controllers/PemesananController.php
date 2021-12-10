@@ -12,7 +12,8 @@ class PemesananController extends Controller
     public function index(){
         $pemesanan = Pemesanan::all();
         $users = Users::all();
-        $suppliers= Supplier::all();
+        // $suppliers= Supplier::all();
+        $suppliers= Supplier::orderBy('nama_sup')->get();
         return view('pemesanan.index',['pemesanan' => $pemesanan], compact('users','suppliers'));
     }
 

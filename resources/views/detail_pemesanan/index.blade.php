@@ -74,6 +74,7 @@
                     </table>
                 </form>
 
+               
                 <table class="table table-bordered">
                   <tr class="success"><th colspan="6">Detail Transaksi</th></tr>
                   <tr>
