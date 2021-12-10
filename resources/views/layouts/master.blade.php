@@ -11,16 +11,19 @@
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css') }}">
-	
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
+	<link rel="stylesheet" href="{{ asset('admin/assets/dataTables/datatables.min.css') }}">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
 	<!-- GOOGLE FONTS -->
+	<!-- TOASTR -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
+	@yield('header')
 </head>
 
 <body>
@@ -50,9 +53,48 @@
 	<script src="{{ asset('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
 	<script src="{{ asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-	
 	<script src="{{ asset('admin/assets/scripts/klorofil-common.js') }}"></script>
-	
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="{{ asset('admin/assets/dataTables/datatables.min.js') }}"></script>
+	<script type="text/javascript">
+		$(document).ready( function () {
+    	$('#datatables').DataTable();
+		} );
+	</script>
+
+	<script>
+
+		@if(Session::has('sukses'))
+		// Display a success toast, with a title
+		toastr.success('{{ Session::get('sukses') }}', "Sukses")
+
+		@endif
+
+	</script>
+<script
+$(document).ready(function(){
+    let row_number = 1;
+    $("#add_row").click(function(e){
+      e.preventDefault();
+      let new_row_number = row_number - 1;
+      $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
+      $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
+      row_number++;
+    });
+
+    $("#delete_row").click(function(e){
+      e.preventDefault();
+      if(row_number > 1){
+        $("#product" + (row_number - 1)).html('');
+        row_number--;
+      }
+    });
+  });
+</script>
+
+
+	@yield('footer')
 </body>
 
 </html>

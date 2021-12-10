@@ -13,8 +13,9 @@
               <div class="right">
                 <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
               </div>
+            </div>
               <div class="panel-body">
-               <table class="table table-striped">
+               <table class="table table-striped" id="datatables">
                 <thead>
                   <tr>
                     <th>ID Warna</th>
@@ -34,7 +35,6 @@
                     @endforeach
                 </tbody>
               </table>
-              {{$warnas->links() }}
             </div>
           </div>
         </div>

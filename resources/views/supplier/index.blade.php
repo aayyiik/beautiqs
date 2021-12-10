@@ -16,7 +16,7 @@
                 </div>
                 </div>
                 <div class="panel-body">
-                 <table class="table table-striped">
+                 <table class="table table-striped" id='datatables'>
                   <thead>
                     <tr>
                         <th>Id Supplier</th>
@@ -43,7 +43,6 @@
                       @endforeach
                   </tbody>
                 </table>
-                {{$suppliers->links() }}
               </div>
             </div>
           </div>
@@ -65,8 +64,13 @@
             <form action="/supplier/create" method="GET">
              {{csrf_field()}}
                   <div class="from-group {{ $errors->has('id_kota') ? 'has-error' : '' }}">
-                    <label for="formGroupExampleInput2" class="form-label">Id Kota</label>
-                    <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="ID Kota" value="{{old('id_kota') }}" >
+                      <label for="formGroupExampleInput2" class="form-label">Kota</label>
+                      <select name="id_kota" class="form-control">
+                          <option value="">- Pilih -</option>
+                        @foreach ($kotas as $kota)
+                            <option value="{{ $kota->id_kota }}">{{ $kota->nama_kota }}</option>
+                        @endforeach                      
+                      </select>
                     @if($errors->has('id_kota') )
                     <span class="help-block">{{$errors->first('id_kota')}}</span>
                     @endif

@@ -12,11 +12,14 @@ class Barang extends Model
     use HasFactory;
     protected $table = 'barang';
     protected $primaryKey = 'kode_barang';
-    protected $fillable = ['kode_barang','id_jb','nama_barang','stok','harga_beli_barang','harga_jual_barang'];
+    protected $fillable = ['kode_barang','nama_barang','id_jb','stok','harga_beli_barang','harga_jual_barang'];
 
-    public function jenis_barang()
-    {
-        return $this->belongsTo(JenisBarang::class,'id_jb');
-    }
-    
+   public function jenis_barang()
+   {
+       return $this->belongsTo(JenisBarang::class,'id_jb');
+   }
+
+   public function detail_pemesanan(){
+    return $this->hasMany(DetailPemesanan::class, 'id','id_pesan','kode_barang');
+}
 }

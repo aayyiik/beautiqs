@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Users extends Authenticatable {
     
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     protected $table = 'user';
     protected $primaryKey = 'id_user';
@@ -54,6 +55,9 @@ class Users extends Authenticatable {
         return $this->belongsTo(Role::class, 'id_role');
     }
 
+    public function pemesanan() {
+        return $this->hasMany(Pemesanan::class, 'id_pesan');
+    }
     
    
 }

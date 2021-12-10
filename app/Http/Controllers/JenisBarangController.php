@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class JenisBarangController extends Controller
 {
     public function index() {
-        $jenisbarangs = JenisBarang::paginate(10);
-        return view('jenisbarang.index',['jenisbarangs' => $jenisbarangs]);
+        // $jenisbarangs = JenisBarang::paginate(10);
+        $jenisbarangs = JenisBarang::all();
+        return view('jenisbarang.index',['jenisbarangs'=>$jenisbarangs]);
 }
 public function create (Request $request){
     $this->validate($request,[

@@ -9,16 +9,16 @@
           <div class="col-md-12">
             <div class="panel">
               <div class="panel-heading">
-                <h3 class="card-header">Data Barang</h3>
-                <div class="right">
-                  <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
-                  <a class="fa fa-trash btn btn-info" href="barang/trash" role="button">Sampah</a>
-                </div>
-                </div>
-                <div class="panel-body">
-                 <table class="table table-striped">
-                  <thead>
-                    <tr>
+                <h3 class="panel-header">Data Barang</h3>
+                        <div class="right">
+                          <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
+                          <a class="fa fa-trash btn btn-info" href="barang/trash" role="button">Sampah</a>
+                    </div>
+                      </div>
+                        <div class="panel-body">
+                          <table class="table table-striped" id="datatables">
+                            <thead>
+                              <tr>
                         <th>Kode Barang</th>
                         <th>Nama Barang</th>
                         <th>Jenis Barang</th>
@@ -34,17 +34,17 @@
                           <td>{{ $barang->kode_barang }}</td>                         
                           <td>{{ $barang->nama_barang }}</td>
                           <td>{{ $barang->jenis_barang->nama_jb }}</td>
-                          <td>{{ $barang->stok}}</td>
+                          <td>{{ $barang->stok }}</td>
                           <td>{{ $barang->harga_beli_barang }}</td>
                           <td>{{ $barang->harga_jual_barang }}</td>
-                          <td><a href="/barang/{{$barang->kode_barang}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                              <a href="/barang/{{$barang->kode_barang}}/delete"class="btn btn-danger btn-sm " 
-                                onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a> </td>                      
+                          <td><a href="/barang/{{ $barang->kode_barang }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                              <a href="/barang/{{ $barang->kode_barang }}/delete"class="btn btn-danger btn-sm" 
+                                onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a> 
+                          </td>                      
                       </tr>
                       @endforeach
                   </tbody>
-                </table>
-                {{$barangs->links()}}
+                </table>          
               </div>
             </div>
           </div>
@@ -52,7 +52,6 @@
       </div>
     </div>
   </div>
-
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -66,14 +65,6 @@
             <form action="/barang/create" method="GET">
              {{csrf_field()}}
                   
-                  <div class="from-group {{ $errors->has('id_jb') ? 'has-error' : '' }}">
-                    <label for="formGroupExampleInput1" class="form-label">Id Jenis Barang</label>
-                    <input name="id_jb" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Jenis Barang">
-                    @if($errors->has('id_jb') )
-                    <span class="help-block">{{ $errors->first('id_jb') }}</span>
-                    @endif
-                  </div>
-                  
                   <div class="from-group {{ $errors->has('nama_barang') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Nama Barang</label>
                     <input name="nama_barang" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Barang">
@@ -81,6 +72,19 @@
                     <span class="help-block">{{ $errors->first('nama_barang') }}</span>
                    @endif
                   </div>
+
+                <div class="from-group {{ $errors->has('id_jb') ? 'has-error' : '' }}">
+                    <label for="formGroupExampleInput1" class="form-label">Id Jenis Barang</label>
+                    <select name="id_jb" class="form-control">
+                          <option value="">- Pilih -</option>
+                        @foreach ($jenisbarangs as $jb)
+                          <option value="{{ $jb->id_jb }}">{{ $jb->nama_jb }}</option>
+                        @endforeach                      
+                   </select>                   
+                      @if($errors->has('id_jb') )
+                      <span class="help-block">{{ $errors->first('id_jb') }}</span>
+                      @endif
+                </div>
                     
                   <div class="from-group {{ $errors->has('stok') ? 'has-error' : '' }}">
                     <label for="formGroupExampleInput" class="form-label">Stok Barang</label>
