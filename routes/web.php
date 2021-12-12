@@ -14,6 +14,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\DetailPemesananController;
+use App\Http\Controllers\TransaksiController;
 
 
 /*
@@ -76,6 +77,8 @@ Route::get('/pembayaran','PembayaranController@index');
 Route::group(['middleware' => ['auth','checkRole:1']], function(){
 //pemesanan
 Route::get('/pemesanan',[PemesananController::class,'index']);
+// Route::get('pemesanan/update',[PemesananController::class,'update']);
+// Route::get('/transaksi',[TransaksiController::class,'index']);
 
 //detail pemesanan
 Route::get('/pemesanan/datapemesanan',[DetailPemesananController::class,'index']);

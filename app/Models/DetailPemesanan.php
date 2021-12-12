@@ -12,7 +12,7 @@ class DetailPemesanan extends Model
 
     protected $table = "detail_pemesanan";
     
-    protected $fillable = ['id','id_pesan','kode_barang','jumlah_up','harga_up'];
+    protected $fillable = ['id_pesan','kode_barang','jumlah_up','harga_up'];
 
     // public static function kode()
     // {
@@ -40,4 +40,6 @@ class DetailPemesanan extends Model
   public function pemesanan() {
     return $this->belongsTo(Pemesanan::class, 'id_pesan');
   }
+
+ 
 }

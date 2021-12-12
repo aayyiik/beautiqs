@@ -8,6 +8,8 @@ use App\Models\Barang;
 use App\Models\Users;
 use App\Models\Supplier;
 use App\Models\DetailPemesanan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class DetailPemesananController extends Controller
 {
@@ -23,11 +25,13 @@ class DetailPemesananController extends Controller
       
      
         }
-    
+       
     public function store (Request $request){
- 
-      DetailPemesanan::create($request->all());
-      return redirect('pemesanan/datapemesanan');
+     DetailPemesanan::create($request->all());
+    return redirect('pemesanan/datapemesanan');
+
+
+    // dd($request->all());
        
      }
 
@@ -37,16 +41,50 @@ class DetailPemesananController extends Controller
         return redirect('/pemesanan/datapemesanan')->with('sukses','Data Berhasil dihapus');
     }
     
-    // public function submit(){
-    //     $detailpesan  = DetailPemesanan::create([
-    //         'kode_barang'=>$this->barang,
-    //         'jumlah_up'=>1
+    
+
+        public function update(Request $request){
+            // $detailpesan = \App\Models\DetailPemesanan::where('id_user',Auth::user()->id_user);
+            $tgl_pesan = date('Y-m-d');
         
-    //     ]);
-    //     $detailpesan->harga_up=$detailpesan->barang->harga_beli_barang;
-    //     $detailpesan->save();
-       
+            //simpan ke database pemesanan
+            $pemesanan = new Pemesanan;
+            $pemesanan->tgl_pesan = $tgl_pesan;
+            $pemesanan->id_user = Auth::user()->id_user;
+            $pemesanan->id_sup = $request->id_sup;
+            $pemesanan->status_pesan = 0;
+            $pemesanan->save();
+
+            $detailpesan = DetailPemesanan::all();
+          
+            // $detailpesan=DetailPemesanan::all();
+            // $pemesanan=Pemesanan::all();
+ 
+            return redirect('/pemesanan',)->with('sukses','Data Berhasil ditambahkan');
+
+        
+        }
+        // public function update(Request $request){
+        //     // $detailpesan = \App\Models\DetailPemesanan::find($id);
+        //     // $detailpesan->update($detailpesan);
+        //     // $barangs = $this->Barang->get();
+        //     // $suppliers = $this->Supplier->get();
+        //     // $detailpesan = ['barangs'=>$barangs,'suppliers'=>$suppliers];
+        //     // // Pemesanan::create($request->all());
+        //     // DetailPemesanan::create($request->all());
+        //     // return redirect('/pemesanan');
+        //     $detailpesan   =   Pemesanan::updateOrCreate(['id' => $id],
+        //     [
+        //         'kode_rekmed' => $request->kode_rekmed,
+        //         'kode_register' => $request->kode_register,
+        //         'kd_obat' => $request->kd_obat,
+        //         'kuantitas' => $request->kuantitas,
+        //         'subtotal' => $request->kuantitas*$request->harga,
+        //     ]);
+        //     redirect('/pemesanan');
+        // }
         
         
-    // }
+        
 }
+

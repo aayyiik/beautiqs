@@ -26,7 +26,7 @@
                      </div>
                      <div class="mb-3">
                       <label for="formGroupExampleInput2" class="form-label">Id Kota</label>
-                      <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Id Kota" value="{{ $supplier->id_kota}}">
+                      <input name="id_kota" type="integer" class="form-control" id="formGroupExampleInput2" placeholder="Id Kota" value="{{ $supplier->kota->id_kota}}">
                     </div>
                      <div class="mb-3">
                        <label for="formGroupExampleInput2" class="form-label">Nama Supplier</label>

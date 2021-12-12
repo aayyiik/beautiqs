@@ -31,10 +31,10 @@
                                         <tr>
                                             <td>{{ $ps->id_pesan }}</td>
                                             <td>{{ $ps->tgl_pesan }}</td>
-                                            <td>{{ $ps->id_user }}</td>
-                                            <td>{{ $ps->id_sup }}</td>
+                                            <td>{{ $ps->user->nama_user }}</td>
+                                            <td>{{ $ps->supplier->nama_sup }}</td>
                                             <td><label class="label {{ ($ps->status_pesan == 1) ? 'label-success' : 'label-danger'}}">{{ ($ps->status_pesan == 1)
-                                            ? 'PAID' : 'UN-PAID' }}</label></td>
+                                            ? 'Lunas' : 'Belum Lunas' }}</label></td>
                                             <td> </td>                
                                         </tr>
                                         @endforeach

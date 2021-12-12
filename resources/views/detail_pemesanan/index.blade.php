@@ -14,32 +14,11 @@
                     <table class="table table-bordered">     
                    
 
-                                <form action="/pemesanan/store" method="GET" >
+                                <form action="/pemesanan/store" method="GET">
                                     {{csrf_field()}}
-                                <tr><td>
-                                  <div class="form-group col-md-6">
-                                    <label for="formGroupExampleInput2" class="form-label">Pegawai</label>
-                            
-                                        <select name="id_user" class="form-control">  
-                                      <option value="">- Pilih -</option>
-                                    @foreach ($users as $us)
-                                      <option value="{{ $us->id_user }}">{{ $us->nama_user }}</option>
-                                    @endforeach                      
-                               </select>                   
-                                </div>
-
-                              <div class="form-group col-md-6">
-                                <label for="formGroupExampleInput2" class="form-label">Supplier</label>
-                        
-                                    <select name="id_sup" class="form-control">  
-                                  <option value="">- Pilih -</option>
-                                @foreach ($suppliers as $bg)
-                                  <option value="{{ $bg->id_sup }}">{{ $bg->nama_sup }}</option>
-                                @endforeach                      
-                           </select>                   
-                            </div>
-                            
-                            <div class="form-group col-md-6">
+                            <tr><td>
+                             
+                        <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput2" class="form-label">Barang</label>
                         
                                     <select name="kode_barang" class="form-control">  
@@ -54,22 +33,14 @@
                             
                             <div class="form-group col-md-2">
                               <label for="inputAddress2">Jumlah barang</label>
-                              <input name="jumlah_up" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                              <input name="jumlah_up" type="text" class="form-control" id="inputAddress2" placeholder="jumlah">
                             </div>
-                           
-                              <div class="form-group col-md-4">
-                                <label>Tanggal Pesan</label>
-                                <input name="tgl_pesan"type="date" class="form-control" id="tgl_pesan" value="<?php echo date('d-m-Y'); ?>" required/>
-                              
-                              </div>
-                            </div>
+                            
                         </td></tr>
                       
                         <tr><td>
-                    
-
-                                <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                                <a href="/pemesanan/update"class="btn btn-primary">Pesan</a>
+                           <button type="submit" name="submit" class="btn btn-success">Simpan</button>
+                             
                             </td></tr>
                     </table>
                 </form>
@@ -95,8 +66,8 @@
                             <td>{{ $no }}</td>
                             <td>{{ $item->barang->nama_barang}}</td>
                             <td>{{ $item->jumlah_up }}</td>
-                            <td>{{ $item->barang->harga_beli_barang }}</td>
-                            <td>{{ $item->barang->harga_beli_barang*$item->jumlah_up }}</td> 
+                            <td>Rp. {{ number_format($item->barang->harga_beli_barang) }}</td>
+                            <td>Rp. {{ number_format($item->barang->harga_beli_barang*$item->jumlah_up) }}</td> 
                           
                             <td>
                             <a href="/pemesanan/{{$item->id}}/cancel"class="btn btn-danger btn-sm " 
@@ -107,16 +78,56 @@
                             <?php $total=$total+($item->barang->harga_beli_barang*$item->jumlah_up) ?>
                    @endforeach
                     <tr>
-                      <td colspan="5"><p align="right">Total</p></td><td>{{$total}}</td></tr>
+                      <td colspan="5"><p align="right"><strong>Total</strong></p></td><td><strong>Rp. {{ number_format($total)}}</strong></td></tr>
                     </tr>
                 </table>
-               
-                   
+                <table class="table table-bordered"> 
+                  <form action="/pemesanan/update" class="GET">
+                    {{ csrf_field() }}
+                    <tr><td>
+                      <div class="form-group col-md-6">
+                        <label for="formGroupExampleInput2" class="form-label">Pegawai</label>
+                
+                            <select name="id_user" class="form-control">  
+                          <option value="">- Pilih -</option>
+                        @foreach ($users as $us)
+                          <option value="{{ $us->id_user }}">{{ $us->nama_user }}</option>
+                        @endforeach                      
+                   </select>                   
+                    </div>
+  
+                  <div class="form-group col-md-6">
+                    <label for="formGroupExampleInput2" class="form-label">Supplier</label>
+            
+                        <select name="id_sup" class="form-control">  
+                      <option value="">- Pilih -</option>
+                    @foreach ($suppliers as $bg)
+                      <option value="{{ $bg->id_sup }}">{{ $bg->nama_sup }}</option>
+                    @endforeach                      
+               </select>
                 </div>
-            </div>
+               <div class="form-group col-md-4">
+                <label>Tanggal Pesan</label>
+                <input type="date" class="form-control" id="date" value="<?php echo date('d-m-Y'); ?>" />
+              </div>   
+              </td></tr>
+              <div>
+               <tr><td>
+                 
+                      <button type="submit" name="submit" class="btn btn-primary"  onclick="return confirm('Anda yakin akan Pesan?');">
+                        <i class="fa fa-shopping-cart"></i> Pesan </button>
+                    
+                   </td></tr>
+                  </div>
+                </table>
+              </form> 
+                 
+          </div>
         </div>
+      </div>
     </div>
 </div>
+  
   
   
 

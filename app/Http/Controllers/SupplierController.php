@@ -31,6 +31,7 @@ class SupplierController extends Controller
     }
 
     public function update (Request $request,$id_sup){
+
         $supplier = \App\Models\Supplier::find($id_sup);
         $supplier->update($request->all());
         return redirect('/supplier')->with('sukses','Data Berhasil diupdate');

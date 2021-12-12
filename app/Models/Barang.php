@@ -20,6 +20,6 @@ class Barang extends Model
    }
 
    public function detail_pemesanan(){
-    return $this->hasMany(DetailPemesanan::class, 'id','id_pesan','kode_barang');
+    return $this->hasMany(DetailPemesanan::class, 'id','kode_barang');
 }
 }
