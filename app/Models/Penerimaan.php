@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Penerimaan extends Model
 {
     use HasFactory;
-}
-// Schema::create('penerimaan', function (Blueprint $table) {
-//     $table->bigIncrements('id_terima');
-//     $table->unsignedBigInteger('id_user')->unsigned();
-//     $table->unsignedBigInteger('id_sup')->unsigned();
-//     $table->date('tgl_terima');
-//     $table->integer('total_harga');
-//     $table->integer('status_terima')->default(1);
-//     $table->timestamps();
+    protected $table = 'penerimaan';
+    protected $primaryKey = 'id_terima';
+    protected $fillable = ['id_terima','id_sup','id_user','tgl_terima','total_harga','status_terima'];
 
-//     $table->foreign('id_user')->references('id_user')->on('user');
-//     $table->foreign('id_sup')->references('id_sup')->on('supplier');
-// });
+    public function user() {
+        return $this->belongsTo(Users::class, 'id_user');
+    }
+
+    public function supplier() {
+        return $this->belongsTo(Supplier::class, 'id_sup');
+    }
+
+}

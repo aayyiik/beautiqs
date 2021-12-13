@@ -19,20 +19,22 @@
                  <table class="table table-striped" id="datatables">
                   <thead>
                     <tr>
-                        <th>ID Role</th>
-                        <th>Role</th>
+                        <th>ID Penerimaan</th>
+                        <th>ID Pembayaran</th>
+                        <th>TGL Bayar</th>
+                        <th>Total Bayar</th>
                         <th>AKSI</th>
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach($roles as $role)
+                      @foreach($bayar as $byr)
                       <tr>
-                          <td>{{ $role->id_role }}</td>
-                          <td>{{ $role->nama_role }}</td>
-                          <td><a href="/role/{{$role->id_role}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="/role/{{$role->id_role}}/delete"class="btn btn-danger btn-sm " 
-                              onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
-                          </td>                     
+                          <td>{{ $byr->penerimaan->id_terima }}</td>
+                          <td>{{ $byr->id_bayar }}</td>
+                          <td>{{ $byr->tgl_bayar }}</td>
+                          <td>{{ $byr->total_bayar }}</td>
+                          
+                      
                       </tr>
                       @endforeach
                   </tbody>
@@ -56,11 +58,11 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="/role/create" method="GET">
+            <form action="/pembayaran/create method="GET">
              {{csrf_field()}}
                   <div class="from-group {{ $errors->has('nama_role') ? 'has-error' : '' }}">
-                    <label for="formGroupExampleInput" class="form-label">jenis Role</label>
-                    <input name="nama_role" type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">
+                    <label for="formGroupExampleInput" class="form-label">Total Bayar</label>
+                    <input name="total_bayar" type="integer" class="form-control" id="formGroupExampleInput" placeholder="Jenis Role">
                     @if($errors->has('nama_role') )
                     <span class="help-block">{{ $errors->first('nama_role') }}</span>
                     @endif
@@ -75,5 +77,4 @@
       </div>
     </div>
   </div>  
-  
 @stop

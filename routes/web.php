@@ -14,8 +14,8 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\DetailPemesananController;
-use App\Http\Controllers\TransaksiController;
-
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PenerimaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ Route::get('role/{id_sup}/forceDelete', [RoleController::class,'forceDelete']);
 
 //pembayaran
 Route::get('/pembayaran','PembayaranController@index');
-
+Route::get('/pembayaran/create',[PembayaranController::class,'create']);
 
 });
 
@@ -87,7 +87,7 @@ Route::get('pemesanan/{id}/cancel',[DetailPemesananController::class,'destroy'])
 Route::get('pemesanan/update',[DetailPemesananController::class,'update']);
 
 //penerimaan
-Route::get('/penerimaan',[penerimaanController::class,'index']);
+Route::get('/penerimaan',[PenerimaanController::class,'index']);
 });
 
 
