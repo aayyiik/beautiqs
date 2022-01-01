@@ -1,4 +1,4 @@
-@extends('layouts.master') 
+{{-- @extends('layouts.master') 
 
 @section('content')
 <div class="main">
@@ -17,7 +17,8 @@
                                 <form action="/pemesanan/store" method="GET">
                                     {{csrf_field()}}
                             <tr><td>
-                             
+
+                            
                         <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput2" class="form-label">Barang</label>
                         
@@ -28,7 +29,7 @@
                                 @endforeach                      
                            </select>                   
                             </div>
-                            </div>
+                        
                      
                             
                             <div class="form-group col-md-2">
@@ -36,6 +37,11 @@
                               <input name="jumlah_up" type="text" class="form-control" id="inputAddress2" placeholder="jumlah">
                             </div>
                             
+                            <div class="form-group col-md-2">
+                              <label for="inputAddress2">Id Pesan</label>
+                              <input name="id_pesan" type="integer" class="form-control" id="inputAddress2" placeholder="jumlah" value="{{ $id_pesan }}">
+                            </div>
+                          </div>
                         </td></tr>
                       
                         <tr><td>
@@ -45,15 +51,16 @@
                     </table>
                 </form>
 
-               
-                <table class="table table-bordered">
+                
+                  @if(isset($barangs))
+               <div class="box-body table-responsive">
+                <table class="table table-bordered table-striped">
                   <tr class="success"><th colspan="6">Detail Transaksi</th></tr>
-                  <tr>
+                      <tr>
                           <th>#</th>
                           <th>Nama Barang</th>
                           <th>Qty</th>
                           <th>Harga Tiket</th>
-                          <th>Subtotal</th>
                           <th>Aksi</th>
                       </tr>
                       <?php 
@@ -62,40 +69,49 @@
                       
                       ?>  
                      @foreach ($detailpesan as $item)
+                   
                     <tr>
                             <td>{{ $no }}</td>
                             <td>{{ $item->barang->nama_barang}}</td>
                             <td>{{ $item->jumlah_up }}</td>
                             <td>Rp. {{ number_format($item->barang->harga_beli_barang) }}</td>
-                            <td>Rp. {{ number_format($item->barang->harga_beli_barang*$item->jumlah_up) }}</td> 
-                          
-                            <td>
+                             <td>
                             <a href="/pemesanan/{{$item->id}}/cancel"class="btn btn-danger btn-sm " 
                               onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a>
                             </td>
-                            </tr>
+                           
+                          </tr>   
+                          
                             <?php $no++ ?>
-                            <?php $total=$total+($item->barang->harga_beli_barang*$item->jumlah_up) ?>
-                   @endforeach
+                            <?php $total=$total+($item->barang->harga_beli_barang*$item->jumlah_up) ?> 
+                 
+           
+                    @endforeach
                     <tr>
-                      <td colspan="5"><p align="right"><strong>Total</strong></p></td><td><strong>Rp. {{ number_format($total)}}</strong></td></tr>
+                      <td colspan="4"><strong>Total</strong></td>
+                      <td>{{$total}}</td>
+                 
                     </tr>
                 </table>
+               </div>
+              @endif
+
+              <form action="/pemesanan/update" method="GET">
+                {{ csrf_field() }}
                 <table class="table table-bordered"> 
-                  <form action="/pemesanan/update" class="GET">
-                    {{ csrf_field() }}
+               
                     <tr><td>
                       <div class="form-group col-md-6">
                         <label for="formGroupExampleInput2" class="form-label">Pegawai</label>
-                
-                            <select name="id_user" class="form-control">  
+                        <select name="id_user" id="users" class="form-control">  
                           <option value="">- Pilih -</option>
                         @foreach ($users as $us)
                           <option value="{{ $us->id_user }}">{{ $us->nama_user }}</option>
                         @endforeach                      
                    </select>                   
                     </div>
-  
+                    
+
                   <div class="form-group col-md-6">
                     <label for="formGroupExampleInput2" class="form-label">Supplier</label>
             
@@ -108,8 +124,14 @@
                 </div>
                <div class="form-group col-md-4">
                 <label>Tanggal Pesan</label>
-                <input type="date" class="form-control" id="date" value="<?php echo date('d-m-Y'); ?>" />
+                <input type="date" id="date" value="<?=date('Y-m-d')?>"  class="form-control" />
               </div>   
+
+              <div class="form-group col-md-2">
+                <label for="inputAddress2">Id Pesan</label>
+                <input name="id_pesan" type="integer" class="form-control" id="inputAddress2" placeholder="jumlah" value="{{ $id_pesan }}" disabled>
+              </div>
+
               </td></tr>
               <div>
                <tr><td>
@@ -121,7 +143,7 @@
                   </div>
                 </table>
               </form> 
-                 
+              </div>
           </div>
         </div>
       </div>
@@ -132,4 +154,4 @@
   
 
 
-@stop
+@stop --}}

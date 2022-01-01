@@ -13,5 +13,10 @@ class Warna extends Model
     protected $table = 'warna';
     protected $primaryKey = 'id_warna';
     protected $fillable = ['id_warna','warna'];
+
+    public function detail_barang(){
+        return $this->hasMany(DetailBarang::class, 'id_warna');
+    }
 }
+
 

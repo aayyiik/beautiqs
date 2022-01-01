@@ -14,8 +14,10 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\DetailPemesananController;
+use App\Http\Controllers\HistoryStokController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PenerimaanController;
+use App\Models\Penerimaan;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,8 @@ Route::get('/logout',[AuthController::class,'logout'] );
 //Route::get('/dashboard',[AdminController::class,'dashboard']);
 
 Route::group(['middleware' => ['auth','checkRole:2']], function(){
+
+    
 //users buatan sendiri
 Route::get('/users',[UserController::class,'index'] );
 Route::get('/users/create',[UserController::class,'create']) ;
@@ -67,9 +71,7 @@ Route::get('role/trash',[RoleController::class,'trash']);
 Route::get('role/{id_sup}/restore',[RoleController::class,'restore']);
 Route::get('role/{id_sup}/forceDelete', [RoleController::class,'forceDelete']);
 
-//pembayaran
-Route::get('/pembayaran','PembayaranController@index');
-Route::get('/pembayaran/create',[PembayaranController::class,'create']);
+
 
 });
 
@@ -77,17 +79,29 @@ Route::get('/pembayaran/create',[PembayaranController::class,'create']);
 Route::group(['middleware' => ['auth','checkRole:1']], function(){
 //pemesanan
 Route::get('/pemesanan',[PemesananController::class,'index']);
+
+
+// Route::get('/pemesanan/add',[PemesananController::class,'add']);
+// Route::get('/pemesanan/barang/{kode_barang}',[PemesananController::class,'add']);
+Route::get('pemesanan/approved/{id_pesan}',[PemesananController::class,'approved']);
+Route::get('pemesanan/detail/{id_pesan}',[PemesananController::class,'detail']);
 // Route::get('pemesanan/update',[PemesananController::class,'update']);
 // Route::get('/transaksi',[TransaksiController::class,'index']);
 
-//detail pemesanan
-Route::get('/pemesanan/datapemesanan',[DetailPemesananController::class,'index']);
-Route::get('/pemesanan/store',[DetailPemesananController::class,'store']);
-Route::get('pemesanan/{id}/cancel',[DetailPemesananController::class,'destroy']);
-Route::get('pemesanan/update',[DetailPemesananController::class,'update']);
+// //detail pemesanan
+// Route::get('/pemesanan/datapemesanan',[DetailPemesananController::class,'index']);
+// Route::get('/pemesanan/store',[DetailPemesananController::class,'store']);
+// Route::get('pemesanan/{id}/cancel',[DetailPemesananController::class,'destroy']);
+// Route::get('pemesanan/update',[DetailPemesananController::class,'update']);
 
-//penerimaan
-Route::get('/penerimaan',[PenerimaanController::class,'index']);
+
+//transaksi
+Route::get('pemesanan/form',[PemesananController::class,'form']);
+Route::get('pemesanan/{kode_barang}/tambah',[PemesananController::class,'do_tambah_cart'])->where("kode_barang","[0-9]+");
+Route::get('pemesanan/form',[PemesananController::class,'cart']);
+Route::get('pemesanan/{kode_barang}/hapus',[PemesananController::class,'hapus'])->where("kode_barang","[0-9]+");
+Route::get('pemesanan/pesan',[PemesananController::class,'do_tambah_pesan']);
+
 });
 
 
@@ -105,6 +119,9 @@ Route::get('barang/{kode_barang}/delete', [BarangController::class,'delete']);
 Route::get('barang/trash',[BarangController::class,'trash']);
 Route::get('barang/{kode_barang}/restore',[BarangController::class,'restore']);
 Route::get('barang/{kode_barang}/forceDelete', [BarangController::class,'forceDelete']);
+Route::get('barang/{kode_barang}/detail', [BarangController::class,'show']);
+Route::get('/barang/createdetail', [BarangController::class,'createdetail']);
+Route::get('barang/{kode_barang}/detail', [BarangController::class,'detail']);
 //Route::get('/barang/create',[BarangController::class,'create']);
 //Route::get('/barang/{barang}', 'BarangController@create');
 //Route::get('/kota','KotaController@index');
@@ -156,5 +173,28 @@ Route::get('warna/{id_warna}/edit', [WarnaController::class,'edit']);
 Route::post('warna/{id_warna}/update', [WarnaController::class,'update']);
 Route::get('warna/{id_warna}/delete', [WarnaController::class,'delete']);
 
+//histori stok
+Route::get('/history_stok',[HistoryStokController::class,'index'] );
+Route::get('/history_stok/create',[HistoryStokController::class,'create']) ;
+Route::get('/history_stok/{id_his}/edit',[HistoryStokController::class,'edit']) ;
+Route::get('/history_stok/{id_his}/delete',[HistoryStokController::class,'delete']) ;
+Route::get('history_stok/approved/{id_his}',[HistoryStokController::class,'approved']);
 
+//penerimaan
+Route::get('/penerimaan',[PenerimaanController::class,'index']);
+Route::get('penerimaan/{id_terima}/detail', [PenerimaanController::class,'detail']);
+// Route::post('penerimaan/{id_pesan}/update', [PenerimaanController::class,'update']);
+
+//penerimaaan 2
+
+Route::get('penerimaan/form',[PenerimaanController::class,'form']);
+Route::get('penerimaan/{kode_barang}/terima',[PenerimaanController::class,'do_tambah_barang'])->where("kode_barang","[0-9]+");
+Route::get('penerimaan/form',[PenerimaanController::class,'masuk']);
+Route::get('penerimaan/{kode_barang}/hapus',[PenerimaanController::class,'hapus'])->where("kode_barang","[0-9]+");
+Route::get('penerimaan/terima',[PenerimaanController::class,'do_act_barang']);
+
+//pembayaran
+Route::get('/pembayaran','PembayaranController@index');
+Route::get('/pembayaran/{id_terima}/bayar',[PembayaranController::class,'create']);
+Route::post('/pembayaran/{id_terima}/proses',[PembayaranController::class,'proses']);
 });

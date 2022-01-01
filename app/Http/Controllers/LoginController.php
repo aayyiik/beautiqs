@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function index() {
-        $logins = Login::all();
-        return view('login.index',['logins' => $logins]);
+        // $logins = Login::all();
+        // return view('login.index',['logins' => $logins]);
+
+        
     }
 }

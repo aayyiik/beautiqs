@@ -24,7 +24,7 @@
                   {{csrf_field()}}
                      <div class="from-group">
                        <label for="formGroupExampleInput" class="form-label">ID Jenis Barang</label>
-                       <input name="id_jb" type="inteeger" class="form-control" id="formGroupExampleInput" placeholder="id_jb" value="{{ $jenisbarang->id_jb }}">
+                       <input name="id_jb" type="inteeger" class="form-control" id="formGroupExampleInput" placeholder="id_jb" value="{{ $jenisbarang->id_jb }}" disabled>
                      </div>
 
                      <div class="mb-3">

@@ -13,7 +13,7 @@
                         <div class="right">
                           <a class="fa fa-plus btn btn-success" data-toggle="modal" data-target="#exampleModal" href="" role="button">Tambah</a>
                           <a class="fa fa-trash btn btn-info" href="barang/trash" role="button">Sampah</a>
-                    </div>
+                        </div>
                       </div>
                         <div class="panel-body">
                           <table class="table table-striped" id="datatables">
@@ -40,6 +40,7 @@
                           <td><a href="/barang/{{ $barang->kode_barang }}/edit" class="btn btn-warning btn-sm">Edit</a>
                               <a href="/barang/{{ $barang->kode_barang }}/delete"class="btn btn-danger btn-sm" 
                                 onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a> 
+                              <a href="/barang/{{ $barang->kode_barang }}/detail" class="btn btn-info btn-sm">Detail</a>
                           </td>                      
                       </tr>
                       @endforeach
@@ -109,12 +110,29 @@
                     <span class="help-block">{{ $errors->first('harga_jual_barang') }}</span>
                     @endif
                   </div>
+
+                  
+                  <div class="custom-control custom-checkbox">
+                    @foreach ($list_ukuran as $item)
+                    <label>
+                      <input type="checkbox" name="id_ukuran[]" class="custom-control-label" for="customCheck1" value="{{ $item->id_ukuran }}">Ukuran {{ $item->ukuran }}</label>
+                      @endforeach
+                  </div>
+
+                  <div class="custom-control custom-checkbox">
+                    @foreach ($warna as $item)
+                    <label>
+                      <input type="checkbox" name="id_warna[]" class="custom-control-label" for="customCheck1" value="{{ $item->id_warna }}">Warna {{ $item->warna }}</label>
+                      @endforeach
+                  </div>
+                  
+                  
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <input class="btn btn-primary" type="submit" value="Submit">
 
-           
+         
         </div>
       </div>
     </div>

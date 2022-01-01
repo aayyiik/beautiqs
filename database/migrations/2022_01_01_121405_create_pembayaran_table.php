@@ -18,6 +18,7 @@ class CreatePembayaranTable extends Migration
             $table->unsignedBigInteger('id_terima');
             $table->date('tgl_bayar');
             $table->integer('total_bayar');
+            $table->text('bukti');
             $table->timestamps();
 
             $table->foreign('id_terima')->references('id_terima')->on('penerimaan');

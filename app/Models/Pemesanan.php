@@ -42,7 +42,6 @@ class Pemesanan extends Model
     // }
 
     
-
     public function user() {
         return $this->belongsTo(Users::class, 'id_user');
     }
@@ -52,6 +51,17 @@ class Pemesanan extends Model
     }
 
     public function detail_pemesanan(){
-        return $this->hasMany(DetailPemesanan::class, 'id','id_pesan','kode_barang');
+        return $this->hasMany(DetailPemesanan::class, 'id_pesan');
     }
+
+    static function tambah_id_pemesanan(){
+      $data = Pemesanan::create([
+          "tgl_pesan"=> date("Y-m-d"),
+          "status_pesan"=> 0,
+          "id_sup"=>1,
+          "id_user"=>27,
+      ]);
+      return $data->id_pesan;
+    }
+
 }

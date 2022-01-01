@@ -49,7 +49,7 @@
                         <label for="formGroupExampleInput2" class="form-label">Harga Jual Barang</label>
                         <input name="harga_jual_barang" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Harga Jual Barang" value="{{ $barang->harga_jual_barang }}">
                       </div>
-                      <button type="submit" class="btn btn-sm"><i class="fa fa-pencil"></i>Update</button>
+                      <button type="submit" class="btn btn-sm"><i class="fa fa-pencil-square-o"></i>Update</button>
                     </form>
                   </div>
             </div>
