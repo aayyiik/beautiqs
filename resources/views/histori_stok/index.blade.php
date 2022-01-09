@@ -35,10 +35,7 @@
                                 <td><label class="label {{ ($his->status_stok == 1) ? 'label-success' : 'label-danger'}}">{{ ($his->status_stok == 1)
                                   ? 'Telah Diproses' : 'Belum Diproses' }}</label></td>
 
-                                <td>
-                                  <a role="button "href="/history_stok/approved/{{ $his->id_his }}"  class="btn btn-primary btn-sm">
-                                    <i class="fa fa-paint-brush"></i> 
-                                  </a>   
+                                <td>  
                                     <a href="/history_stok/{{ $his->id_his }}/delete"class="btn btn-danger btn-sm" 
                                     onclick="return confirm ('Yakin mau dihapus ?')">Hapus</a> 
                                 </td>                   
@@ -57,7 +54,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Barang Baru</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Stok Update</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -66,7 +63,7 @@
             <form action="/history_stok/create" method="GET">
              {{csrf_field()}}
                 <div class="from-group {{ $errors->has('kode_barang') ? 'has-error' : '' }}">
-                    <label for="formGroupExampleInput1" class="form-label">Id Jenis Barang</label>
+                    <label for="formGroupExampleInput1" class="form-label">Barang</label>
                     <select name="kode_barang" class="form-control">
                           <option value="">- Pilih -</option>
                         @foreach ($barangs as $br)
@@ -79,8 +76,8 @@
                 </div>
 
                 <div class="from-group {{ $errors->has('tgl_his') ? 'has-error' : '' }}">
-                    <label for="formGroupExampleInput2" class="form-label">Harga Beli Barang</label>
-                    <input name = "tgl_his" type="date" class="form-control" id="formGroupExampleInput2" placeholder="Harga Beli">
+                    <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
+                    <input name = "tgl_his" type="date" class="form-control" id="formGroupExampleInput2" placeholder="Tanggal">
                     @if($errors->has('tgl_his') )
                     <span class="help-block">{{ $errors->first('tgl_his') }}</span>
                     @endif

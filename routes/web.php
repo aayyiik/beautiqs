@@ -30,9 +30,7 @@ use App\Models\Penerimaan;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'SiteController@home');
 
 
 // home
@@ -81,26 +79,15 @@ Route::group(['middleware' => ['auth','checkRole:1']], function(){
 Route::get('/pemesanan',[PemesananController::class,'index']);
 
 
-// Route::get('/pemesanan/add',[PemesananController::class,'add']);
-// Route::get('/pemesanan/barang/{kode_barang}',[PemesananController::class,'add']);
-Route::get('pemesanan/approved/{id_pesan}',[PemesananController::class,'approved']);
-Route::get('pemesanan/detail/{id_pesan}',[PemesananController::class,'detail']);
-// Route::get('pemesanan/update',[PemesananController::class,'update']);
-// Route::get('/transaksi',[TransaksiController::class,'index']);
-
-// //detail pemesanan
-// Route::get('/pemesanan/datapemesanan',[DetailPemesananController::class,'index']);
-// Route::get('/pemesanan/store',[DetailPemesananController::class,'store']);
-// Route::get('pemesanan/{id}/cancel',[DetailPemesananController::class,'destroy']);
-// Route::get('pemesanan/update',[DetailPemesananController::class,'update']);
-
-
-//transaksi
+//pemesanan
 Route::get('pemesanan/form',[PemesananController::class,'form']);
 Route::get('pemesanan/{kode_barang}/tambah',[PemesananController::class,'do_tambah_cart'])->where("kode_barang","[0-9]+");
 Route::get('pemesanan/form',[PemesananController::class,'cart']);
 Route::get('pemesanan/{kode_barang}/hapus',[PemesananController::class,'hapus'])->where("kode_barang","[0-9]+");
 Route::get('pemesanan/pesan',[PemesananController::class,'do_tambah_pesan']);
+Route::get('pemesanan/approved/{id_pesan}',[PemesananController::class,'approved']);
+Route::get('pemesanan/detail/{id_pesan}',[PemesananController::class,'detail']);
+
 
 });
 
@@ -122,9 +109,7 @@ Route::get('barang/{kode_barang}/forceDelete', [BarangController::class,'forceDe
 Route::get('barang/{kode_barang}/detail', [BarangController::class,'show']);
 Route::get('/barang/createdetail', [BarangController::class,'createdetail']);
 Route::get('barang/{kode_barang}/detail', [BarangController::class,'detail']);
-//Route::get('/barang/create',[BarangController::class,'create']);
-//Route::get('/barang/{barang}', 'BarangController@create');
-//Route::get('/kota','KotaController@index');
+
 
 //kota
 Route::get('/kota',[KotaController::class,'index'] );

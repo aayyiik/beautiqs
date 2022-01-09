@@ -14,26 +14,6 @@ class DetailPemesanan extends Model
     
     protected $fillable = ['id_pesan','kode_barang','jumlah_up','harga_up'];
 
-    // public static function kode()
-    // {
-    // 	$kode = DB::table('detail_pemesanan')->max('id_pesan');
-    // 	$addNol = '';
-    // 	$kode = str_replace("111", "", $kode);
-    // 	$kode = (int) $kode + 1;
-    //     $incrementKode = $kode;
-
-    // 	if (strlen($kode) == 1) {
-    // 		$addNol = "000";
-    // 	} elseif (strlen($kode) == 2) {
-    // 		$addNol = "00";
-    // 	} elseif (strlen($kode == 3)) {
-    // 		$addNol = "0";
-    // 	}
-
-    // 	$kodeBaru = "111".$addNol.$incrementKode;
-    // 	return $kodeBaru;
-   // }
-
   public function barang() {
     return $this->belongsTo(Barang::class, 'kode_barang');
   }

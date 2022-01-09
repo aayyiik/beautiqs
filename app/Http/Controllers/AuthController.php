@@ -26,13 +26,7 @@ class AuthController extends Controller
 
         return redirect('/dashboard');
     }
-        // Else, the user has been logged in. Do as you wish.
-    
-        // if(Auth::attempt($request->only('email','password'))){
-        //     return redirect('/dashboard');
-        // }
-        // return ('/login');
-    
+        
 
     public function logout() {
         Auth::logout();

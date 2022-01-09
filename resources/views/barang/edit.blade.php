@@ -37,7 +37,7 @@
 
                      <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Stok Barang</label>
-                        <input name="stok" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Stok Barang" value="{{ $barang->stok }}">
+                        <input name="stok" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Stok Barang" value="{{ $barang->stok }}" readonly>
                       </div>
 
                       <div class="mb-3">

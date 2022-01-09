@@ -29,8 +29,8 @@
                             <label for="exampleInputPassword1">Bukti Bayar</label>
                             <input type="file" name ="bukti" class="form-control"  placeholder="tgl">
                         </div>
-                       <button type="submit" class="btn btn-primary">Primary</button>
-                      
+                        <button type="submit" class="btn btn-sm"><i class="fa fa-pencil-square-o"></i>Update</button>
+                   
                         </form>
           
               </div>
