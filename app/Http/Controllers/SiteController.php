@@ -10,6 +10,9 @@ use Illuminate\Support\Str;
 //simpan
 class SiteController extends Controller
 {
+  public function home(){
+    return view('sites.home');
+  }
     public function register(){
         $users = Users::all();
         $kotas = Kota::all();
@@ -18,11 +21,11 @@ class SiteController extends Controller
     }
 
     public function postregister(Request $request){
-      //  dd($request->all());
+     
         Users::create([
 
             'id_kota' => request('id_kota'),
-            'id_role' => request('id_role'),
+            'id_role' => 1,
             'nama_user' => request('nama_user'),
             'alamat' => request('alamat'),
             'telp' => request('telp'),

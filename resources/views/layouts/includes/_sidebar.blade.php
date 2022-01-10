@@ -1,13 +1,12 @@
 <div id="sidebar-nav" class="sidebar" style="background-color: #483D8B;">
     <div class="sidebar-scroll">
-        <nav>
+        <nav> 
             <ul class="nav">
                
                 <li><a href="/dashboard"><i class="lnr lnr-home"></i><span>Dashboard</span></a></li>
                 @if(auth()->user()->id_role=='2')
-                <li><a href="/users"><i class="lnr lnr-user"></i><span>User</span></a></li> 
-                <li><a href="/role"><i class="lnr lnr-book"></i><span>Role</span></a></li>
-                <li><a href="/laporan"><i class="lnr lnr-book"></i><span>Laporan</span></a></li>
+                    <li><a href="/users"><i class="lnr lnr-user"></i><span>User</span></a></li> 
+                    <li><a href="/role"><i class="lnr lnr-book"></i><span>Role</span></a></li>
                 @endif
 
 
@@ -26,17 +25,19 @@
                         </ul>
                      
                     </div>
-                   
+                    <li><a href="/history_stok"><i class="lnr lnr-book"></i><span>Histori of Stok</span></a></li>
                 </li>  
                 <li>
                     <a href="#subPages1" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Data Transaksi</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                     <div id="subPages1" class="collapse ">
                         <ul class="nav">
+
                                 @if(auth()->user()->id_role=='1')
                                     <li><a href="/pemesanan"><i class="lnr lnr-book"></i><span>Pemesanan</span></a></li>
                                     <li><a href="/penerimaan"><i class="lnr lnr-book"></i><span>Penerimaan</span></a></li>
                                     @elseif(auth()->user()->id_role=='2')
                                         <li><a href="/pembayaran"><i class="lnr lnr-book"></i><span>Pembayaran</span></a></li>
+                                         <li><a href="/penerimaan"><i class="lnr lnr-book"></i><span>Penerimaan</span></a></li>
                                 @endif
                                 
                         </ul>

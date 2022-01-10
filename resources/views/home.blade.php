@@ -1,1 +1,1 @@
-'home'
+@extends('layouts.frontend')

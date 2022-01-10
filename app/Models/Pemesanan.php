@@ -21,28 +21,7 @@ class Pemesanan extends Model
         'status_pesan'
     ];
 
-    // public static function kode()
-    // {
-    // 	$kode = DB::table('pemesanan')->max('id_pesan');
-    // 	$addNol = '';
-    // 	$kode = str_replace("111", "", $kode);
-    // 	$kode = (int) $kode + 1;
-    //     $incrementKode = $kode;
-
-    // 	if (strlen($kode) == 1) {
-    // 		$addNol = "000";
-    // 	} elseif (strlen($kode) == 2) {
-    // 		$addNol = "00";
-    // 	} elseif (strlen($kode == 3)) {
-    // 		$addNol = "0";
-    // 	}
-
-    // 	$kodeBaru = "111".$addNol.$incrementKode;
-    // 	return $kodeBaru;
-    // }
-
     
-
     public function user() {
         return $this->belongsTo(Users::class, 'id_user');
     }
@@ -52,6 +31,17 @@ class Pemesanan extends Model
     }
 
     public function detail_pemesanan(){
-        return $this->hasMany(DetailPemesanan::class, 'id','id_pesan','kode_barang');
+        return $this->hasMany(DetailPemesanan::class, 'id_pesan');
     }
+
+    static function tambah_id_pemesanan(){
+      $data = Pemesanan::create([
+          "tgl_pesan"=> date("Y-m-d"),
+          "status_pesan"=> 0,
+          "id_sup"=>1,
+          "id_user"=>27,
+      ]);
+      return $data->id_pesan;
+    }
+
 }

@@ -14,6 +14,8 @@
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
 	<link rel="stylesheet" href="{{ asset('admin/assets/dataTables/datatables.min.css') }}">
+	
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
 	<!-- GOOGLE FONTS -->
@@ -57,9 +59,21 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<script src="{{ asset('admin/assets/dataTables/datatables.min.js') }}"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+	
 	<script type="text/javascript">
 		$(document).ready( function () {
-    	$('#datatables').DataTable();
+    	$('#datatables').DataTable({
+			dom: 'Bfrtip',
+			buttons: ['copy','csv','excel','pdf','print']
+		});
+		
 		} );
 	</script>
 
@@ -72,26 +86,6 @@
 		@endif
 
 	</script>
-<script
-$(document).ready(function(){
-    let row_number = 1;
-    $("#add_row").click(function(e){
-      e.preventDefault();
-      let new_row_number = row_number - 1;
-      $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
-      $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
-      row_number++;
-    });
-
-    $("#delete_row").click(function(e){
-      e.preventDefault();
-      if(row_number > 1){
-        $("#product" + (row_number - 1)).html('');
-        row_number--;
-      }
-    });
-  });
-</script>
 
 
 	@yield('footer')

@@ -1,241 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-<title>Bootstrap Simple Login Form with Blue Background</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> 
-<style>
-/* body {
-	color: #fff;
-	background: #3598dc;
-	font-family: 'Roboto', sans-serif;
-}
-.form-control {
-	height: 41px;
-	background: #f2f2f2;
-	box-shadow: none !important;
-	border: none;
-}
-.form-control:focus {
-	background: #e2e2e2;
-}
-.form-control, .btn {        
-	border-radius: 3px;
-}
-.signup-form {
-	width: 400px;
-	margin: 30px auto;
-}
-.signup-form form {
-	color: #999;
-	border-radius: 3px;
-	margin-bottom: 15px;
-	background: #fff;
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	padding: 30px;
-}
-.signup-form h2  {
-	color: #333;
-	font-weight: bold;
-	margin-top: 0;
-}
-.signup-form hr  {
-	margin: 0 -30px 20px;
-}    
-.signup-form .form-group {
-	margin-bottom: 20px;
-}
-.signup-form input[type="checkbox"] {
-	margin-top: 3px;
-}
-.signup-form .row div:first-child {
-	padding-right: 10px;
-}
-.signup-form .row div:last-child {
-	padding-left: 10px;
-}
-.signup-form .btn {        
-	font-size: 16px;
-	font-weight: bold;
-	background: #3598dc;
-	border: none;
-	min-width: 140px;
-}
-.signup-form .btn:hover, .signup-form .btn:focus {
-	background: #2389cd !important;
-	outline: none;
-}
-.signup-form a {
-	color: #fff;
-	text-decoration: underline;
-}
-.signup-form a:hover {
-	text-decoration: none;
-}
-.signup-form form a {
-	color: #3598dc;
-	text-decoration: none;
-}	
-.signup-form form a:hover {
-	text-decoration: underline;
-}
-.signup-form .hint-text  {
-	padding-bottom: 15px;
-	text-align: center;
-} */
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daftar</title>
 
-.divider-text {
-    position: relative;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-.divider-text span {
-    padding: 7px;
-    font-size: 12px;
-    position: relative;   
-    z-index: 2;
-}
-.divider-text:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    top: 55%;
-    left: 0;
-    z-index: 1;
-}
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-.btn-facebook {
-    background-color: #405D9D;
-    color: #fff;
-}
-.btn-twitter {
-    background-color: #42AEEC;
-    color: #fff;
-}
-</style>
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{asset('/frontend')}}/css/style.css">
+
+    <!-- custom js file link  -->
+    <script src="{{asset('/frontend')}}/js/script.js" defer></script>
+
 </head>
 <body>
-<div class="signup-form">
-    <form action="/postregister" method="POST">
-		<h2>Register</h2>
-		<p>Daftarkan dirimu menjadi pegawai Beautiqs Store</p>
-		<hr>
-    {{csrf_field()}}
-    <div class="from-group">
-        <label for="id_kota" class="form-label">Id Kota</label>
-        <select name="id_kota" class="form-control">
-              <option value="">- Pilih -</option>
-            @foreach ($kotas as $kota)
-              <option value="{{ $kota->id_kota }}">{{ $kota->nama_kota }}</option>
-            @endforeach                      
-        </select>
-      </div>
 
-      <div class="from-group">
-        <label for="id_role" class="form-label">Id Role</label>
-        <select name="id_role" class="form-control">
-              <option value="">- Pilih -</option>
-            @foreach ($roles as $role)
-              <option value="{{ $role->id_role }}">{{ $role->nama_role }}</option>
-            @endforeach                      
-        </select>
-      </div>
+<!-- header section starts  -->
 
-      <div class="from-group">
-        <label for="nama_user" class="form-label">Nama User</label>
-        <input name="nama_user" type="text" class="form-control" id="nama_user" placeholder="Nama User">
-      </div>
+<header class="header">
 
-      <div class="from-group">
-        <label for="alamat" class="form-label">Alamat User</label>
-        <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat User">
-      </div>
+    <a href="/frontend" class="logo"> Beautiqs_System </a>
 
-      <div class="from-group">
-        <label for="telp" class="form-label">Telp</label>
-        <input name="telp" type="text" class="form-control" id="telp" placeholder="Telp User">
-      </div>
+    {{-- <nav class="navbar">
+        <ul>
+            <li><a href="home.php">beranda</a></li>
+            <li><a href="products.php">produk</a></li>
+            <li><a href="#">lainnya +</a>
+                <ul>
+                    <li><a href="about.php">tentang</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.php">kontak</a></li>
+            <li><a href="#">akun +</a>
+                <ul>
+                    <li><a href="login.php">masuk</a></li>
+                    <li><a href="register.php">daftar</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav> --}}
 
-      <div class="from-group">
-        <label for="email" class="form-label">Username</label>
-        <input name="email" type="email" class="form-control" id="email" placeholder="Username">
-      </div>
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+    </div>
 
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input name="password" type="password" class="form-control" id="password" name="password">
-      </div>
-		
-		  <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-      </div>
+    <form action="" class="search-form">
+        <input type="search" name="" placeholder="search here..." id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
     </form>
 
-</body>
-</html>
+</header>
 
-{{-- <h2>Register</h2>
-                                <form action="/postregister" method="POST">
-                                    {{csrf_field()}}
-                                    <div class="from-group">
-                                        <label for="id_kota" class="form-label">Id Kota</label>
+<!-- header section ends -->
+
+<!-- header section  -->
+
+<section class="heading">
+    <h1>Akun</h1>
+    {{-- <p> <a href="/home">beranda</a> >> daftar </p> --}}
+</section>
+
+<!-- header section -->
+
+<!-- header section -->
+
+<!-- register form section starts -->
+
+<section class="register-form">
+
+    <form action="/postregister" method="POST">
+      {{csrf_field()}}
+
+        <h3>Daftar Sekarang</h3>
+        <div class="inputBox">
+            <span class="fas fa-building"></span>
+            <label for="id_kota" class="form-label"></label>
                                         <select name="id_kota" class="form-control">
                                               <option value="">- Pilih -</option>
                                             @foreach ($kotas as $kota)
                                               <option value="{{ $kota->id_kota }}">{{ $kota->nama_kota }}</option>
                                             @endforeach                      
                                         </select>
-                                      </div>
-                    
-                                      <div class="from-group">
-                                        <label for="id_role" class="form-label">Id Role</label>
-                                        <select name="id_role" class="form-control">
-                                              <option value="">- Pilih -</option>
-                                            @foreach ($roles as $role)
-                                              <option value="{{ $role->id_role }}">{{ $role->nama_role }}</option>
-                                            @endforeach                      
-                                        </select>
-                                      </div>
-                    
-                                      <div class="from-group">
-                                        <label for="nama_user" class="form-label">Nama User</label>
-                                        <input name="nama_user" type="text" class="form-control" id="nama_user" placeholder="Nama User">
-                                      </div>
-                    
-                                      <div class="from-group">
-                                        <label for="alamat" class="form-label">Alamat User</label>
-                                        <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat User">
-                                      </div>
-                    
-                                      <div class="from-group">
-                                        <label for="telp" class="form-label">Telp</label>
-                                        <input name="telp" type="text" class="form-control" id="telp" placeholder="Telp User">
-                                      </div>
-                    
-                                      <div class="from-group">
-                                        <label for="email" class="form-label">Username</label>
-                                        <input name="email" type="email" class="form-control" id="email" placeholder="Username">
-                                      </div>
+        </div>
 
-                                      <div class="form-group">
-                                        <label for="password">Password:</label>
-                                        <input name="password" type="password" class="form-control" id="password" name="password">
-                                      </div>
-                            
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-                                    </div>
-                                </form>
-                             --}}
-                         
-                             
-                             
-                            
+        <div class="inputBox">
+            <span class="far fa-id-card"></span>
+            <input type="text" name="nama_user" placeholder="silakan nama anda" id="nama_user">
+        </div>
+
+        <div class="inputBox">
+            <span class="fas fa-map"></span>
+          <input type="text" name="alamat" placeholder="silakan isi alamat anda" id="alamat">
+        </div>
+
+        <div class="inputBox">
+            <span class="fas fa-phone-alt"></span>
+            <input type="integer" name="telp" placeholder="silakan isi telepon anda" id="telp">
+        </div>
+
+        <div class="inputBox">
+          <span class="fas fa-envelope"></span>
+          <input type="email" name="email" placeholder="silakan email anda" id="email">
+        </div>
+
+        <div class="inputBox">
+            <span class="fas fa-lock"></span>
+            <input type="password" name="password" placeholder="silakan verifikasi password" id="password">
+        </div>
+
+        <div class="form-group">
+          <button type="submit" value="daftar" class="btn btn-primary btn-lg btn-block">Register</button>
+        </div>
+        <a href="/login" class="btn">Sudah Punya Akun</a>
+      </form>
+{{-- 
+        <input type="submit" value="daftar" class="btn"> --}}
+        
+    
+
+</section>
+
+<!-- register form section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="home.php"> <i class="fas fa-angle-right"></i> beranda</a>
+                <a href="products.php"> <i class="fas fa-angle-right"></i> produk</a>
+                <a href="about.php"> <i class="fas fa-angle-right"></i> tentang</a>
+                <a href="contact.php"> <i class="fas fa-angle-right"></i> kontak</a>
+                <a href="login.php"> <i class="fas fa-angle-right"></i> masuk</a>
+                <a href="register.php"> <i class="fas fa-angle-right"></i> daftar</a>
+                <a href="cart.php"> <i class="fas fa-angle-right"></i> keranjang</a>
+            </div>
+
+            <div class="box">
+                <h3>lainnya</h3>
+                <a href="#"> <i class="fas fa-angle-right"></i> akun </a>
+                <a href="#"> <i class="fas fa-angle-right"></i> pesanan </a>
+                <a href="#"> <i class="fas fa-angle-right"></i> daftar keinginan </a>
+                <a href="#"> <i class="fas fa-angle-right"></i> ketentuan pemakaian </a>
+                <a href="#"> <i class="fas fa-angle-right"></i> kebijakan privasi </a>
+            </div>
+
+            <div class="box">
+                <h3>ikuti kami</h3>
+                <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+            </div>
+
+        </div>
+
+    <div class="credit"> created by <span>mr .web designer</span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
+
+</body>
+</html>

@@ -11,4 +11,8 @@ class Ukuran extends Model
     protected $table = 'ukuran';
     protected $primaryKey = 'id_ukuran';
     protected $fillable = ['id_ukuran','ukuran'];
+
+    public function detail_barang(){
+        return $this->hasMany(DetailBarang::class, 'id_ukuran');
+    }
 }
