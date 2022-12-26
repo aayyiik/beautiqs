@@ -14,3 +14,8 @@ boutique secara mudah dan cepat demi peningkatan ekonomi boutique setiap hari.
 Aktor :
 - Pemilik
 - Pegawai
+
+Proses pengembangan :
+- Laravel 8
+- DB MySql
+- Boostrap
