@@ -19,3 +19,7 @@ Proses pengembangan :
 - Laravel 8
 - DB MySql
 - Boostrap
+
+Dikerjakan Oleh :
+- Ari Lathifatul Chusna (saya) membuat Web Admin.
+- Rugayyah Syadziliyah Setiawan membuat landing page.
